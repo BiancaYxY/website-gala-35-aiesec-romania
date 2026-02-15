@@ -11,8 +11,6 @@ export default async function Home({
   const l = locale as Locale;
   const dict = getDict(l);
 
-  const signupUrl = "https://forms.gle/PASTE_YOUR_FORM_LINK";
-
   return (
     <main className="mx-auto max-w-6xl px-4 py-10">
       <section className="max-w-3xl">

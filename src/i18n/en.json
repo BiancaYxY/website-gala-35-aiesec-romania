@@ -6,5 +6,11 @@
   "nav.shop": "Shop",
   "nav.faq": "FAQ",
   "home.title": "Gala 35 AIESEC Romania",
-  "home.subtitle": "RO/EN routing works. Next: premium UI + Supabase + Stripe."
+  "home.subtitle": "RO/EN routing works. Next: premium UI + Supabase + Stripe.",
+  "participants.title": "Participants",
+  "participants.filterByGeneration": "Filter by generation",
+  "participants.all": "All",
+  "participants.loadMore": "Load more",
+  "participants.noParticipants": "No participants found",
+  "participants.errorLoading": "Could not load participants. Please try again."
 }
