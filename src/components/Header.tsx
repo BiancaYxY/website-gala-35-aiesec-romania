@@ -1,6 +1,7 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
@@ -29,27 +30,24 @@ export function Header({
     faq: string;
   };
 }) {
+  const MENU_ANIMATION_MS = 240;
   const pathname = usePathname() || "/";
   const locale = useMemo(() => getLocaleFromPath(pathname), [pathname]);
-  const [open, setOpen] = useState(false);
+  const [menuMounted, setMenuMounted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  // Lock scroll when menu open
   useEffect(() => {
-    if (!open) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [open]);
-
-  // Close on ESC
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenuOpen(false);
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (menuOpen || !menuMounted) return;
+    const timer = window.setTimeout(() => setMenuMounted(false), MENU_ANIMATION_MS);
+    return () => window.clearTimeout(timer);
+  }, [menuOpen, menuMounted]);
 
   const href = (path: string) => `/${locale}${path}`;
   const langHref = (next: Locale) => switchLocaleInPath(pathname, next);
@@ -63,15 +61,28 @@ export function Header({
     { label: labels.shop, path: "/shop" },
   ] as const;
 
+  const openMenu = () => {
+    setMenuMounted(true);
+    window.requestAnimationFrame(() => setMenuOpen(true));
+  };
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-subtle bg-background/80 backdrop-blur">
+    <header className="fixed top-0 right-0 left-0 z-[1200] border-b border-subtle bg-black/20 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        {/* Brand */}
-        <Link href={href("")} className="text-sm font-semibold">
-          Gala <span className="text-gold">35</span>
+        <Link href={href("")} className="inline-flex self-stretch items-center">
+          <span className="relative h-full w-56 sm:w-72">
+            <Image
+              src="/rooted%20in%20romania.svg"
+              alt="Rooted in Romania"
+              fill
+              className="object-contain object-left"
+              priority
+            />
+          </span>
         </Link>
 
-        {/* Desktop nav */}
         <nav className="hidden items-center gap-6 md:flex">
           {navItems.map((i) => (
             <Link
@@ -103,7 +114,6 @@ export function Header({
           </div>
         </nav>
 
-        {/* Mobile buttons */}
         <div className="flex items-center gap-2 md:hidden">
           <Link
             className="rounded-2xl border border-subtle px-3 py-2 text-xs"
@@ -113,56 +123,72 @@ export function Header({
           </Link>
 
           <button
-            onClick={() => setOpen(true)}
+            onClick={openMenu}
             className="rounded-2xl border border-subtle px-3 py-2"
+            aria-label="Open menu"
           >
-            ☰
+            Menu
           </button>
         </div>
       </div>
 
-      {/* MOBILE DRAWER */}
-      {open && (
-        <div className="fixed inset-0 z-[9999] isolate">
-          {/* Overlay */}
+      {menuMounted && (
+        <div
+          className={`fixed inset-0 z-[9999] isolate transition-opacity duration-200 ${
+            menuOpen ? "opacity-100" : "pointer-events-none opacity-0"
+          }`}
+        >
           <div
-            className="absolute inset-0 z-0 bg-black/95"
-            onClick={() => setOpen(false)}
+            className={`absolute inset-0 bg-black/70 transition-opacity duration-200 ${
+              menuOpen ? "opacity-100" : "opacity-0"
+            }`}
+            onClick={closeMenu}
+            aria-hidden="true"
           />
 
-          {/* Drawer */}
-          <div className="absolute right-0 top-0 flex z-10 h-full w-full flex-col bg-background shadow-soft ring-1 ring-white/10 sm:w-[85%] sm:max-w-sm">
-            {/* Sticky header */}
-            <div className="sticky top-0 z-10 flex items-center justify-between border-b border-subtle bg-background px-4 py-4">
+          <div
+            className={`absolute inset-0 z-10 flex h-dvh flex-col overflow-hidden transition-all duration-200 ease-out sm:inset-y-0 sm:right-0 sm:left-auto sm:h-full sm:w-[85%] sm:max-w-sm sm:shadow-soft sm:ring-1 sm:ring-white/10 ${
+              menuOpen ? "translate-y-0 opacity-100 sm:translate-x-0" : "translate-y-3 opacity-0 sm:translate-x-full sm:translate-y-0"
+            }`}
+            style={{
+              backgroundImage:
+                'linear-gradient(rgba(10, 12, 22, 0.65), rgba(10, 12, 22, 0.65)), url("/background%20photo.svg")',
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <div className="sticky top-0 z-10 flex items-center justify-between border-b border-subtle bg-black/25 px-4 py-4 backdrop-blur-sm">
               <div className="text-sm font-semibold">
                 Menu <span className="text-gold">Gala 35</span>
               </div>
 
               <button
-                onClick={() => setOpen(false)}
+                onClick={closeMenu}
                 className="rounded-2xl border border-subtle px-3 py-2"
+                aria-label="Close menu"
               >
-                ✕
+                Close
               </button>
             </div>
 
-            {/* Links */}
-            <nav className="flex flex-col gap-1 px-2 py-4">
-              {navItems.map((i) => (
-                <Link
-                  key={i.path}
-                  href={href(i.path)}
-                  onClick={() => setOpen(false)}
-                  className="rounded-2xl px-4 py-4 text-base font-medium hover:bg-card"
-                >
-                  {i.label}
-                </Link>
-              ))}
+            <nav className="flex-1 overflow-y-auto px-2 py-4">
+              <div className="flex flex-col gap-1">
+                {navItems.map((i) => (
+                  <Link
+                    key={i.path}
+                    href={href(i.path)}
+                    onClick={closeMenu}
+                    className="rounded-2xl px-4 py-4 text-base font-medium text-foreground hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
+                  >
+                    {i.label}
+                  </Link>
+                ))}
+              </div>
             </nav>
 
-            {/* Footer */}
             <div className="mt-auto border-t border-subtle px-4 py-4 text-xs text-muted">
-              Mobile-first: butoane mari, ușor de apăsat.
+              Mobile-first navigation.
             </div>
           </div>
         </div>

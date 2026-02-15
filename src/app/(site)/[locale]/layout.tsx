@@ -1,8 +1,8 @@
-import { notFound } from "next/navigation";
+﻿import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { getDict, t, type Locale } from "@/i18n/getDict";
 
-const LOCALES = ["ro", "en"] as const;
+const LOCALES: readonly Locale[] = ["ro", "en"];
 
 export default async function LocaleLayout({
   children,
@@ -13,9 +13,12 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  if (!LOCALES.includes(locale as any)) notFound();
+  if (!LOCALES.includes(locale as Locale)) {
+    notFound();
+  }
 
-  const dict = getDict(locale as Locale);
+  const currentLocale = locale as Locale;
+  const dict = getDict(currentLocale);
 
   return (
     <>
@@ -29,7 +32,7 @@ export default async function LocaleLayout({
           faq: t(dict, "nav.faq"),
         }}
       />
-      {children}
+      <div className="pt-20">{children}</div>
     </>
   );
 }
