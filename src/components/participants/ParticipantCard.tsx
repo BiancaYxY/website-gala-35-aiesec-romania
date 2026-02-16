@@ -19,27 +19,27 @@ export function ParticipantCard({ participant }: ParticipantCardProps) {
   const showImage = Boolean(participant.photo_url) && !imgFailed;
 
   return (
-    <article className="rounded-2xl bg-card p-3 shadow-[0_10px_28px_rgba(0,0,0,0.28)] ring-1 ring-white/10">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-background/60">
+    <article className="rounded-xl bg-card p-2 shadow-[0_6px_18px_rgba(0,0,0,0.24)] ring-1 ring-white/10">
+      <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-background/60">
         {showImage ? (
           <Image
             src={participant.photo_url as string}
             alt={participant.name}
             fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1400px) 25vw, 20vw"
             className="object-cover"
             onError={() => setImgFailed(true)}
           />
         ) : (
-          <div className="flex h-full items-center justify-center bg-background text-3xl font-semibold text-gold/90">
+          <div className="flex h-full items-center justify-center bg-background text-xl font-semibold text-gold/90 sm:text-2xl">
             {initials}
           </div>
         )}
       </div>
 
-      <div className="mt-3 flex items-start justify-between gap-2">
-        <h3 className="text-base font-semibold text-foreground">{participant.name}</h3>
-        <span className="shrink-0 rounded-full bg-gold px-3 py-1 text-xs font-semibold text-black">
+      <div className="mt-2 flex items-start justify-between gap-1.5">
+        <h3 className="text-sm font-semibold leading-tight text-foreground sm:text-[0.95rem]">{participant.name}</h3>
+        <span className="shrink-0 rounded-full bg-gold px-2 py-0.5 text-[10px] font-semibold text-black sm:text-[11px]">
           {participant.generation}
         </span>
       </div>

@@ -68,8 +68,32 @@ body {
   background-attachment: fixed;
 }
 
+.sr-init {
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(2px);
+  transition:
+    opacity 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 650ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
+}
+
+.sr-in {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .sr-init {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
   }
 }

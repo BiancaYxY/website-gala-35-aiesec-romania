@@ -30,10 +30,10 @@ const PAGE_SIZE = 12;
 
 function SkeletonCard() {
   return (
-    <div className="rounded-2xl bg-card p-3 ring-1 ring-white/10">
-      <div className="aspect-[4/5] animate-pulse rounded-xl bg-white/10" />
-      <div className="mt-3 h-4 w-2/3 animate-pulse rounded bg-white/10" />
-      <div className="mt-2 h-3 w-1/3 animate-pulse rounded bg-white/10" />
+    <div className="rounded-xl bg-card p-2 ring-1 ring-white/10">
+      <div className="aspect-[3/4] animate-pulse rounded-lg bg-white/10" />
+      <div className="mt-2 h-3 w-2/3 animate-pulse rounded bg-white/10" />
+      <div className="mt-1.5 h-2.5 w-1/3 animate-pulse rounded bg-white/10" />
     </div>
   );
 }
@@ -178,7 +178,7 @@ export function ParticipantsGrid({ labels, initialGeneration = "all" }: Particip
       {error && <div className="rounded-xl border border-red-400/40 bg-red-900/20 p-3 text-sm text-red-100">{error}</div>}
 
       {initialLoading ? (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {Array.from({ length: 8 }).map((_, i) => (
             <SkeletonCard key={i} />
           ))}
@@ -189,7 +189,7 @@ export function ParticipantsGrid({ labels, initialGeneration = "all" }: Particip
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {participants.map((participant) => (
               <ParticipantCard key={participant.id} participant={participant} />
             ))}
