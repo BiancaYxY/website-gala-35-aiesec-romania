@@ -63,32 +63,47 @@ export default async function Home({
         </div>
       </section>
 
-      <section className="mt-10 max-w-xl">
+      <section className="mt-8 mx-auto w-full max-w-4xl">
         <Link
           href={"https://bit.ly/AIESECRomaniaGala35"}
           target="_blank"
-          className="group block rounded-3xl bg-[#730000] p-7 text-white shadow-[0_20px_48px_rgba(115,0,0,0.45)] ring-1 ring-white/25 transition duration-200 hover:-translate-y-1 hover:shadow-[0_24px_56px_rgba(115,0,0,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          className="group mx-auto block max-w-3xl rounded-3xl bg-gold px-6 py-5 text-center text-black shadow-[0_16px_40px_rgba(226,192,49,0.35)] ring-1 ring-white/35 transition duration-200 hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(226,192,49,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
         >
-          <p className="text-xs uppercase tracking-[0.22em] text-white/75">
-            {l === "ro" ? "Inscriere" : "Registration"}
-          </p>
-          <p className="mt-3 text-2xl font-bold">Register here</p>
-          <p className="mt-2 text-sm text-white/85">
-            {l === "ro"
-              ? "Apasa aici pentru a deschide formularul de inscriere."
-              : "Click here to open the registration form."}
+          <p className="text-xl font-bold sm:text-2xl">
+            {l === "ro" ? "Înscrie-te aici #pentruRomânia" : "Register here #pentruRomania"}
           </p>
         </Link>
 
-        <div className="mt-2 flex justify-center">
+        <div className="mx-auto mt-0.5 w-full max-w-3xl overflow-hidden rounded-2xl">
           <Image
-            src="/35%20years%20of%20excellence.svg"
-            alt="35 Years of Excellence"
-            width={900}
-            height={220}
-            className="h-auto w-auto max-w-full"
+            src="/35%20years%20anniversary%20gala.svg"
+            alt="35 Years Anniversary Gala"
+            width={1400}
+            height={360}
+            className="h-36 w-full object-cover object-center md:h-48 lg:h-52"
             priority
           />
+        </div>
+      </section>
+
+      <section className="mx-auto mt-6 w-full max-w-4xl rounded-3xl bg-[rgb(var(--navy))] px-4 py-5 md:px-6 md:py-6">
+        <h2 className="mb-4 text-center text-xl font-semibold text-white sm:text-2xl">
+          {l === "ro" ? "Scurtă istorie a AIESEC in România" : "Short history of AIESEC in Romania"}
+        </h2>
+        <div className="mx-auto w-full max-w-3xl overflow-hidden rounded-2xl">
+          <div className="aspect-video w-full">
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube-nocookie.com/embed/CFBhVqWY0iE"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="h-full w-full"
+            />
+          </div>
         </div>
       </section>
     </main>
