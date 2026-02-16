@@ -116,10 +116,11 @@ export function Header({
 
         <div className="flex items-center gap-2 md:hidden">
           <Link
-            className="rounded-2xl border border-subtle px-3 py-2 text-xs"
+            className="rounded-2xl border border-subtle bg-card px-2.5 py-2 text-xs text-foreground"
             href={locale === "ro" ? langHref("en") : langHref("ro")}
+            aria-label={locale === "ro" ? "Switch language to English" : "Schimbă limba în română"}
           >
-            {locale === "ro" ? "EN" : "RO"}
+            {locale === "ro" ? "RO" : "EN"}
           </Link>
 
           <button
@@ -127,7 +128,7 @@ export function Header({
             className="rounded-2xl border border-subtle px-3 py-2"
             aria-label="Open menu"
           >
-            Menu
+            {locale === "ro" ? "Meniu" : "Menu"}
           </button>
         </div>
       </div>
@@ -168,7 +169,7 @@ export function Header({
                 className="rounded-2xl border border-subtle px-3 py-2"
                 aria-label="Close menu"
               >
-                Close
+                {locale === "ro" ? "Închide" : "Close"}
               </button>
             </div>
 
@@ -186,10 +187,6 @@ export function Header({
                 ))}
               </div>
             </nav>
-
-            <div className="mt-auto border-t border-subtle px-4 py-4 text-xs text-muted">
-              Mobile-first navigation.
-            </div>
           </div>
         </div>
       )}

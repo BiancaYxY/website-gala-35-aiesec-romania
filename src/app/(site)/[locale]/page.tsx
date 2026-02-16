@@ -86,7 +86,7 @@ export default async function Home({
         </div>
       </section>
 
-      <section className="mx-auto mt-6 w-full max-w-4xl rounded-3xl bg-[rgb(var(--navy))] px-4 py-5 md:px-6 md:py-6">
+      <section className="mx-auto mt-6 w-full max-w-4xl rounded-3xl bg-card px-4 py-5 md:px-6 md:py-6">
         <h2 className="mb-4 text-center text-xl font-semibold text-white sm:text-2xl">
           {l === "ro" ? "Scurtă istorie a AIESEC in România" : "Short history of AIESEC in Romania"}
         </h2>
