@@ -1,16 +1,16 @@
 {
-  "nav.home": "Acasa",
+  "nav.home": "Acasă",
   "nav.agenda": "Agenda",
-  "nav.participants": "Participanti",
-  "nav.donations": "Donatii",
+  "nav.participants": "Participanți",
+  "nav.donations": "Donații",
   "nav.shop": "Shop",
   "nav.faq": "FAQ",
-  "home.title": "Gala 35 AIESEC Romania",
-  "home.subtitle": "Routing RO/EN functioneaza. Urmeaza UI premium + Supabase + Stripe.",
-  "participants.title": "Participanti",
+  "home.title": "Gala 35 AIESEC România",
+  "home.subtitle": "",
+  "participants.title": "Participanți",
   "participants.filterByGeneration": "Filtreaza dupa generatie",
   "participants.all": "Toate",
-  "participants.loadMore": "Incarca mai multi",
-  "participants.noParticipants": "Nu exista participanti pentru acest filtru",
-  "participants.errorLoading": "Nu am putut incarca participantii. Incearca din nou."
+  "participants.loadMore": "Încarcă mai mulți",
+  "participants.noParticipants": "Nu există participanți pentru acest filtru",
+  "participants.errorLoading": "Nu am putut încărca participanții. Încearcă din nou."
 }
