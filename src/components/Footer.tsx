@@ -28,6 +28,30 @@ export function Footer() {
             </svg>
             <span>TikTok</span>
           </a>
+
+          <a
+            href="https://www.facebook.com/AIESECinRomania"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 font-medium transition hover:bg-white/20"
+          >
+            <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 fill-current" aria-hidden="true">
+              <path d="M13.5 8.5V6.75c0-.64.52-1.16 1.16-1.16h1.84V2.5h-2.4A4.6 4.6 0 0 0 9.5 7.1v1.4H7v3.2h2.5v9.8h3.7v-9.8h2.9l.45-3.2h-3.35z" />
+            </svg>
+            <span>Facebook</span>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/company/aiesecromania/"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 font-medium transition hover:bg-white/20"
+          >
+            <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 fill-current" aria-hidden="true">
+              <path d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.86-3.04-1.86 0-2.14 1.45-2.14 2.95v5.67H9.33V9h3.42v1.56h.05c.48-.9 1.64-1.86 3.37-1.86 3.61 0 4.28 2.37 4.28 5.46v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z" />
+            </svg>
+            <span>LinkedIn</span>
+          </a>
         </div>
 
         <div className="self-start text-xs sm:self-end sm:text-sm">

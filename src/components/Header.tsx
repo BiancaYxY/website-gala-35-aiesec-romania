@@ -67,6 +67,9 @@ export function Header({
   };
 
   const closeMenu = () => setMenuOpen(false);
+  const menuLabel = locale === "ro" ? "Meniu" : "Menu";
+  const closeLabel = locale === "ro" ? "Închide meniul" : "Close menu";
+  const currentLocaleLabel = locale.toUpperCase();
 
   return (
     <header className="fixed top-0 right-0 left-0 z-[1200] border-b border-subtle bg-black/20 backdrop-blur-sm">
@@ -116,19 +119,23 @@ export function Header({
 
         <div className="flex items-center gap-2 md:hidden">
           <Link
-            className="rounded-2xl border border-subtle bg-card px-2.5 py-2 text-xs text-foreground"
+            className="rounded-full border border-subtle bg-card/90 px-3 py-2 text-xs font-semibold tracking-wide text-foreground shadow-[0_8px_20px_rgba(0,0,0,0.22)]"
             href={locale === "ro" ? langHref("en") : langHref("ro")}
             aria-label={locale === "ro" ? "Switch language to English" : "Schimbă limba în română"}
           >
-            {locale === "ro" ? "RO" : "EN"}
+            {currentLocaleLabel}
           </Link>
 
           <button
             onClick={openMenu}
-            className="rounded-2xl border border-subtle px-3 py-2"
+            className="inline-flex items-center gap-2 rounded-full border border-subtle bg-black/40 px-3.5 py-2 text-sm font-semibold text-foreground shadow-[0_10px_24px_rgba(0,0,0,0.3)] backdrop-blur-sm"
             aria-label="Open menu"
           >
-            {locale === "ro" ? "Meniu" : "Menu"}
+            <span
+              aria-hidden="true"
+              className="inline-block h-4 w-4 bg-[linear-gradient(rgb(var(--fg))_0_0)] bg-[length:100%_1.5px] bg-[position:center_2px] bg-no-repeat after:block after:h-4 after:w-4 after:bg-[linear-gradient(rgb(var(--fg))_0_0)] after:bg-[length:100%_1.5px] after:bg-[position:center_11px] after:bg-no-repeat"
+            />
+            <span>{menuLabel}</span>
           </button>
         </div>
       </div>
@@ -159,28 +166,57 @@ export function Header({
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="sticky top-0 z-10 flex items-center justify-between border-b border-subtle bg-black/25 px-4 py-4 backdrop-blur-sm">
-              <div className="text-sm font-semibold">
-                Menu <span className="text-gold">Gala 35</span>
+            <div className="sticky top-0 z-10 border-b border-subtle bg-black/35 px-4 pt-4 pb-3 backdrop-blur-md">
+              <div className="flex items-center justify-between">
+                <div className="text-sm font-semibold uppercase tracking-[0.14em] text-muted">
+                  {menuLabel} <span className="text-gold">Gala 35</span>
+                </div>
+
+                <button
+                  onClick={closeMenu}
+                  className="rounded-full border border-subtle bg-black/40 p-2 text-foreground transition hover:bg-card/60"
+                  aria-label={closeLabel}
+                >
+                  <span aria-hidden="true" className="block text-lg leading-none">
+                    ×
+                  </span>
+                </button>
               </div>
 
-              <button
-                onClick={closeMenu}
-                className="rounded-2xl border border-subtle px-3 py-2"
-                aria-label="Close menu"
-              >
-                {locale === "ro" ? "Închide" : "Close"}
-              </button>
+              <div className="mt-3 inline-flex rounded-full border border-subtle bg-black/30 p-1">
+                <Link
+                  href={langHref("ro")}
+                  onClick={closeMenu}
+                  className={`rounded-full px-3 py-1.5 text-xs font-semibold tracking-wide transition ${
+                    locale === "ro" ? "bg-card text-foreground" : "text-muted hover:text-foreground"
+                  }`}
+                >
+                  RO
+                </Link>
+                <Link
+                  href={langHref("en")}
+                  onClick={closeMenu}
+                  className={`rounded-full px-3 py-1.5 text-xs font-semibold tracking-wide transition ${
+                    locale === "en" ? "bg-card text-foreground" : "text-muted hover:text-foreground"
+                  }`}
+                >
+                  EN
+                </Link>
+              </div>
             </div>
 
-            <nav className="flex-1 overflow-y-auto px-2 py-4">
-              <div className="flex flex-col gap-1">
+            <nav className="flex-1 overflow-y-auto px-3 py-4">
+              <div className="flex flex-col gap-2">
                 {navItems.map((i) => (
                   <Link
                     key={i.path}
                     href={href(i.path)}
                     onClick={closeMenu}
-                    className="rounded-2xl px-4 py-4 text-base font-medium text-foreground hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
+                    className={`rounded-2xl border px-4 py-3.5 text-base font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20 ${
+                      pathname === href(i.path)
+                        ? "border-white/20 bg-card/90 text-foreground shadow-[0_14px_30px_rgba(0,0,0,0.22)]"
+                        : "border-transparent bg-black/10 text-foreground/90 hover:border-subtle hover:bg-card/60"
+                    }`}
                   >
                     {i.label}
                   </Link>
