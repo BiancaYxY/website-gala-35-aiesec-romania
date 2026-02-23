@@ -11,7 +11,7 @@ const league = League_Spartan({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html>
+    <html lang="en" style={{ colorScheme: "dark" }}>
       <body className={`${league.variable} min-h-screen bg-background text-foreground font-sans`}>
         <ScrollReveal />
         <div className="flex min-h-screen flex-col">

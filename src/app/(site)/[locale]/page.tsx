@@ -1,5 +1,6 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
+import { GalaCountdown } from "@/components/home/GalaCountdown";
 import { type Locale } from "@/i18n/getDict";
 
 export default async function Home({
@@ -64,6 +65,8 @@ export default async function Home({
       </section>
 
       <section className="mt-8 mx-auto w-full max-w-4xl">
+        <GalaCountdown locale={l} />
+
         <Link
           href={"https://bit.ly/AIESECRomaniaGala35"}
           target="_blank"

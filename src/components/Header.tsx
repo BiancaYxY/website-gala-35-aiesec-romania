@@ -73,9 +73,9 @@ export function Header({
 
   return (
     <header className="fixed top-0 right-0 left-0 z-[1200] border-b border-subtle bg-black/20 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link href={href("")} className="inline-flex self-stretch items-center">
-          <span className="relative h-full w-56 overflow-hidden sm:w-72">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-4 py-3">
+        <Link href={href("")} className="inline-flex min-w-0 flex-1 self-stretch items-center">
+          <span className="relative h-full w-[min(52vw,14rem)] overflow-hidden sm:w-72">
             <Image
               src="/rooted%20in%20romania.svg"
               alt="Rooted in Romania"
@@ -117,7 +117,7 @@ export function Header({
           </div>
         </nav>
 
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex shrink-0 items-center gap-2 md:hidden">
           <Link
             className="rounded-full border border-subtle bg-card/90 px-3 py-2 text-xs font-semibold tracking-wide text-foreground shadow-[0_8px_20px_rgba(0,0,0,0.22)]"
             href={locale === "ro" ? langHref("en") : langHref("ro")}
@@ -128,7 +128,7 @@ export function Header({
 
           <button
             onClick={openMenu}
-            className="inline-flex items-center gap-2 rounded-full border border-subtle bg-black/40 px-3.5 py-2 text-sm font-semibold text-foreground shadow-[0_10px_24px_rgba(0,0,0,0.3)] backdrop-blur-sm"
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-subtle bg-black/40 px-3 py-2 text-sm font-semibold text-foreground shadow-[0_10px_24px_rgba(0,0,0,0.3)] backdrop-blur-sm"
             aria-label="Open menu"
           >
             <span
