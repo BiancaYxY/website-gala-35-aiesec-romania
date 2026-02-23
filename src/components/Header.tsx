@@ -75,12 +75,12 @@ export function Header({
     <header className="fixed top-0 right-0 left-0 z-[1200] border-b border-subtle bg-black/20 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link href={href("")} className="inline-flex self-stretch items-center">
-          <span className="relative h-full w-56 sm:w-72">
+          <span className="relative h-full w-56 overflow-hidden sm:w-72">
             <Image
               src="/rooted%20in%20romania.svg"
               alt="Rooted in Romania"
               fill
-              className="object-contain object-left"
+              className="object-contain object-left scale-[1.08] brightness-110 contrast-110 drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)]"
               priority
             />
           </span>

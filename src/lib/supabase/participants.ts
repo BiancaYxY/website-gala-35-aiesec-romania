@@ -47,6 +47,45 @@ function normalizeGeneration(value: string | null | undefined): string {
   return (value ?? "").trim();
 }
 
+function parseYear(value: string): number | null {
+  if (!/^\d{4}$/.test(value)) return null;
+  const parsed = Number.parseInt(value, 10);
+  return Number.isNaN(parsed) ? null : parsed;
+}
+
+function parseGenerationInterval(value: string): { start: number; end: number } | null {
+  const match = value.match(/^(\d{4})\s*-\s*(\d{4})$/);
+  if (!match) return null;
+
+  const start = Number.parseInt(match[1], 10);
+  const end = Number.parseInt(match[2], 10);
+  if (Number.isNaN(start) || Number.isNaN(end)) return null;
+
+  return start <= end ? { start, end } : { start: end, end: start };
+}
+
+function generationMatchesFilter(generation: string, filter: string): boolean {
+  const normalizedFilter = normalizeGeneration(filter);
+  if (!normalizedFilter || normalizedFilter.toLowerCase() === "all") return true;
+
+  const filterYear = parseYear(normalizedFilter);
+  if (filterYear === null) {
+    return generation === normalizedFilter;
+  }
+
+  const interval = parseGenerationInterval(generation);
+  if (interval) {
+    return filterYear >= interval.start && filterYear <= interval.end;
+  }
+
+  const singleGenerationYear = parseYear(generation);
+  if (singleGenerationYear !== null) {
+    return singleGenerationYear === filterYear;
+  }
+
+  return generation === normalizedFilter;
+}
+
 export async function listParticipantsByPage(args: {
   generation?: string;
   page: number;
@@ -54,24 +93,20 @@ export async function listParticipantsByPage(args: {
 }): Promise<ParticipantsPageResult> {
   const page = Math.max(0, args.page);
   const pageSize = Math.min(Math.max(1, args.pageSize), 48);
-  const offset = page * pageSize;
 
   const params = new URLSearchParams();
   params.set("select", "id,name,generation,photo_url");
   params.set("order", "name.asc");
-  params.set("offset", String(offset));
-  params.set("limit", String(pageSize + 1));
-
   const generation = normalizeGeneration(args.generation);
-  if (generation && generation.toLowerCase() !== "all") {
-    params.set("generation", `eq.${generation}`);
-  }
 
   const rows = await supabaseSelect<Participant[]>(params);
-  const hasMore = rows.length > pageSize;
+  const filteredRows = rows.filter((row) => generationMatchesFilter(normalizeGeneration(row.generation), generation));
+  const offset = page * pageSize;
+  const pageRows = filteredRows.slice(offset, offset + pageSize + 1);
+  const hasMore = pageRows.length > pageSize;
 
   return {
-    items: hasMore ? rows.slice(0, pageSize) : rows,
+    items: hasMore ? pageRows.slice(0, pageSize) : pageRows,
     hasMore,
   };
 }

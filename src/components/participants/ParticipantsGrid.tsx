@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ParticipantCard } from "@/components/participants/ParticipantCard";
 import type { Participant } from "@/lib/supabase/participants";
@@ -17,7 +17,6 @@ type ParticipantsLabels = {
 type ParticipantsApiResponse = {
   items: Participant[];
   hasMore: boolean;
-  generations: string[];
   error?: string;
 };
 
@@ -44,15 +43,13 @@ export function ParticipantsGrid({ labels, initialGeneration = "all" }: Particip
   const searchParams = useSearchParams();
 
   const [selectedGeneration, setSelectedGeneration] = useState(initialGeneration || "all");
+  const [yearInput, setYearInput] = useState(initialGeneration === "all" ? "" : initialGeneration);
   const [participants, setParticipants] = useState<Participant[]>([]);
-  const [generations, setGenerations] = useState<string[]>([]);
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  const generationOptions = useMemo(() => ["all", ...generations], [generations]);
 
   async function fetchPage(args: { generation: string; page: number; reset: boolean }) {
     const params = new URLSearchParams();
@@ -67,7 +64,6 @@ export function ParticipantsGrid({ labels, initialGeneration = "all" }: Particip
       throw new Error(data.error || labels.errorLoading);
     }
 
-    setGenerations(data.generations ?? []);
     setHasMore(Boolean(data.hasMore));
     setPage(args.page);
 
@@ -97,6 +93,7 @@ export function ParticipantsGrid({ labels, initialGeneration = "all" }: Particip
   useEffect(() => {
     const genFromUrl = searchParams.get("gen") || "all";
     setSelectedGeneration(genFromUrl);
+    setYearInput(genFromUrl === "all" ? "" : genFromUrl);
     void refresh(genFromUrl);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
@@ -117,6 +114,20 @@ export function ParticipantsGrid({ labels, initialGeneration = "all" }: Particip
     if (nextGen === selectedGeneration) return;
     setSelectedGeneration(nextGen);
     updateUrl(nextGen);
+  };
+
+  const onYearInputChange = (value: string) => {
+    const sanitized = value.replace(/\D/g, "").slice(0, 4);
+    setYearInput(sanitized);
+
+    if (sanitized.length === 0) {
+      onChangeGeneration("all");
+      return;
+    }
+
+    if (sanitized.length === 4) {
+      onChangeGeneration(sanitized);
+    }
   };
 
   const onLoadMore = async () => {
@@ -140,38 +151,29 @@ export function ParticipantsGrid({ labels, initialGeneration = "all" }: Particip
         <label htmlFor="generation-filter" className="mb-2 block text-sm font-medium text-foreground">
           {labels.filterByGeneration}
         </label>
-
-        <select
-          id="generation-filter"
-          value={selectedGeneration}
-          onChange={(e) => onChangeGeneration(e.target.value)}
-          className="block w-full rounded-xl border border-subtle bg-background px-3 py-3 text-sm text-foreground md:hidden"
-        >
-          {generationOptions.map((gen) => (
-            <option key={gen} value={gen}>
-              {gen === "all" ? labels.all : gen}
-            </option>
-          ))}
-        </select>
-
-        <div className="hidden flex-wrap gap-2 md:flex">
-          {generationOptions.map((gen) => {
-            const active = selectedGeneration === gen;
-            return (
-              <button
-                key={gen}
-                type="button"
-                onClick={() => onChangeGeneration(gen)}
-                className={`rounded-full px-4 py-2 text-sm transition ${
-                  active
-                    ? "bg-gold text-black"
-                    : "border border-subtle bg-background text-foreground hover:bg-background/80"
-                }`}
-              >
-                {gen === "all" ? labels.all : gen}
-              </button>
-            );
-          })}
+        <div className="flex items-center gap-2">
+          <input
+            id="generation-filter"
+            type="text"
+            inputMode="numeric"
+            pattern="\d{4}"
+            maxLength={4}
+            value={yearInput}
+            onChange={(e) => onYearInputChange(e.target.value)}
+            placeholder="2024"
+            className="block w-full rounded-xl border border-subtle bg-background px-3 py-3 text-sm text-foreground"
+          />
+          <button
+            type="button"
+            onClick={() => onChangeGeneration("all")}
+            className={`rounded-xl px-4 py-3 text-sm transition ${
+              selectedGeneration === "all"
+                ? "bg-gold text-black"
+                : "border border-subtle bg-background text-foreground hover:bg-background/80"
+            }`}
+          >
+            {labels.all}
+          </button>
         </div>
       </div>
 
