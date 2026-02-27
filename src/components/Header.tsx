@@ -75,8 +75,8 @@ export function Header({
         <Link href={href("")} className="inline-flex min-w-0 flex-1 self-stretch items-center">
           <span className="relative h-full w-[min(52vw,14rem)] overflow-hidden sm:w-72">
             <Image
-              src="/rooted%20in%20romania.svg"
-              alt="Rooted in Romania"
+              src="/romania%20everywhere.svg"
+              alt="Romania Everywhere"
               fill
               className="object-contain object-left scale-[1.08] brightness-110 contrast-110 drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)]"
               priority
