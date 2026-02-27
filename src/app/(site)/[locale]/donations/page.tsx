@@ -210,7 +210,7 @@ export default async function DonationsPage({
                 Abia aștept Gala pentru a mă conecta cu voi toți - pentru a genera idei, pentru a alimenta ambiția și pentru
                 a aprinde impulsul care va duce AIESEC în România mai departe.
               </p>
-              <p className="text-sm italic text-gold">Lavinia - MCP 26.27</p>
+              <p className="text-sm italic text-gold">Lavinia Lupu - MCP 26.27</p>
               <p className="text-sm italic text-gold">Once an AIESECer, always an AIESECer. 💙</p>
             </>
           ) : (
