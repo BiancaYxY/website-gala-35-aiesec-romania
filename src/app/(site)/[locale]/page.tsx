@@ -118,6 +118,28 @@ export default async function Home({
             />
           </div>
         </div>
+
+        <div className="mx-auto mt-6 w-full max-w-3xl">
+          <h3 className="mb-3 text-center text-lg font-semibold text-white sm:text-xl">
+            {l === "ro" ? "Întrebări frecvente" : "Frequently asked questions"}
+          </h3>
+
+          <details className="group rounded-2xl border border-white/25 bg-white/10 px-4 py-3 text-white">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium">
+              <span>
+                {l === "ro"
+                  ? "Întrebare exemplu: Cum mă pot înscrie la Gala 35?"
+                  : "Placeholder question: How can I register for Gala 35?"}
+              </span>
+              <span className="text-2xl leading-none transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p className="mt-3 text-white/85">
+              {l === "ro"
+                ? "Răspuns exemplu: Înscrierea se face prin formularul de pe această pagină."
+                : "Placeholder answer: Registration is done through the form linked on this page."}
+            </p>
+          </details>
+        </div>
       </section>
     </main>
   );

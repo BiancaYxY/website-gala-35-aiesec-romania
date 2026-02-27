@@ -27,7 +27,6 @@ export function Header({
     participants: string;
     donations: string;
     shop: string;
-    faq: string;
   };
 }) {
   const MENU_ANIMATION_MS = 240;
@@ -57,7 +56,6 @@ export function Header({
     { label: labels.agenda, path: "/agenda" },
     { label: labels.participants, path: "/participants" },
     { label: labels.donations, path: "/donations" },
-    { label: labels.faq, path: "/faq" },
     { label: labels.shop, path: "/shop" },
   ] as const;
 
