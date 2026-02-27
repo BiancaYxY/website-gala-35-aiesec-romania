@@ -3,6 +3,10 @@ export type Participant = {
   name: string;
   generation: string;
   photo_url: string | null;
+  phone_number: string | null;
+  email: string | null;
+  linkedin: string | null;
+  lc: string | null;
 };
 
 export type ParticipantsPageResult = {
@@ -95,7 +99,7 @@ export async function listParticipantsByPage(args: {
   const pageSize = Math.min(Math.max(1, args.pageSize), 48);
 
   const params = new URLSearchParams();
-  params.set("select", "id,name,generation,photo_url");
+  params.set("select", "id,name,generation,photo_url,phone_number,email,linkedin,lc");
   params.set("order", "name.asc");
   const generation = normalizeGeneration(args.generation);
 
