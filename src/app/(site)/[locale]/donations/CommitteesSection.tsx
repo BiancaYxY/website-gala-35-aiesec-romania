@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import { IbanCopyRow } from "./IbanCopyRow";
 
-type Committee = {
+export type Committee = {
   name: string;
   short?: string;
   lcStatement?: string;
