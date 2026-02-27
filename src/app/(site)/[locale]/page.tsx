@@ -124,21 +124,179 @@ export default async function Home({
             {l === "ro" ? "Întrebări frecvente" : "Frequently asked questions"}
           </h3>
 
-          <details className="group rounded-2xl border border-white/25 bg-white/10 px-4 py-3 text-white">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium">
-              <span>
-                {l === "ro"
-                  ? "Întrebare exemplu: Cum mă pot înscrie la Gala 35?"
-                  : "Placeholder question: How can I register for Gala 35?"}
-              </span>
-              <span className="text-2xl leading-none transition-transform group-open:rotate-45">+</span>
-            </summary>
-            <p className="mt-3 text-white/85">
-              {l === "ro"
-                ? "Răspuns exemplu: Înscrierea se face prin formularul de pe această pagină."
-                : "Placeholder answer: Registration is done through the form linked on this page."}
-            </p>
-          </details>
+          <div className="space-y-3">
+            <details className="group rounded-2xl border border-white/25 bg-white/10 px-4 py-3 text-white">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium">
+                <span>
+                  {l === "ro" ? "Cum este construită agenda?" : "How is the agenda structured?"}
+                </span>
+                <span className="text-2xl leading-none transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <div className="mt-3 space-y-2 text-white/85">
+                {l === "ro" ? (
+                  <>
+                    <p>Evenimentul este împărțit pe două zile:</p>
+                    <ul className="list-disc space-y-1 pl-5">
+                      <li>
+                        <em>24 Aprilie</em>, eveniment extern, unde sunt invitați și partenerii AIESEC în România.
+                      </li>
+                      <li>
+                        <em>25 Aprilie</em>, Gală internă care va găzdui doar alumnii și membrii activi.
+                      </li>
+                    </ul>
+                    <p>
+                      Programul complet îl puteți găsi la secțiunea <em>„Agenda”</em>.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>The event is split into two days:</p>
+                    <ul className="list-disc space-y-1 pl-5">
+                      <li>
+                        <em>April 24</em>: external event, with AIESEC in Romania partners invited.
+                      </li>
+                      <li>
+                        <em>April 25</em>: internal Gala for alumni and active members only.
+                      </li>
+                    </ul>
+                    <p>
+                      You can find the full program in the <em>“Agenda”</em> section.
+                    </p>
+                  </>
+                )}
+              </div>
+            </details>
+
+            <details className="group rounded-2xl border border-white/25 bg-white/10 px-4 py-3 text-white">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium">
+                <span>{l === "ro" ? "Cazarea este asigurată?" : "Is accommodation provided?"}</span>
+                <span className="text-2xl leading-none transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <div className="mt-3 space-y-2 text-white/85">
+                {l === "ro" ? (
+                  <>
+                    <p>
+                      Cazarea este disponibilă la <em>Hotel Sheraton</em>, contra cost, atât pentru seara de <em>24</em>,
+                      seara de <em>25</em>, cât și pentru ambele. Costurile cazării nu sunt suportate de AIESEC România.
+                    </p>
+                    <p>
+                      Vă puteți asigura cazarea completând <em>formularul de înscriere</em>, alegând opțiunea de cazare.
+                    </p>
+                    <p>
+                      Dacă ați completat formularul și vă răzgândiți în privința cazării, vă rugăm anunțați echipa de
+                      organizare, persoana de contact fiind <em>Maria Moga (+40733423730)</em>.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>
+                      Accommodation is available at <em>Sheraton Hotel</em>, at your own cost, for the night of
+                      <em> April 24</em>, <em>April 25</em>, or both nights. Accommodation costs are not covered by AIESEC
+                      Romania.
+                    </p>
+                    <p>
+                      You can request accommodation in the <em>registration form</em> by selecting the accommodation
+                      option.
+                    </p>
+                    <p>
+                      If you already submitted the form and changed your mind, please notify the organizing team.
+                      Contact person: <em>Maria Moga (+40733423730)</em>.
+                    </p>
+                  </>
+                )}
+              </div>
+            </details>
+
+            <details className="group rounded-2xl border border-white/25 bg-white/10 px-4 py-3 text-white">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium">
+                <span>{l === "ro" ? "Cum pot ajunge la locație?" : "How can I get to the venue?"}</span>
+                <span className="text-2xl leading-none transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <div className="mt-3 space-y-3 text-white/85">
+                {l === "ro" ? (
+                  <>
+                    <div>
+                      <p className="font-medium text-white">Aeroportul Otopeni (Henri Coandă - OTP)</p>
+                      <p>Autobuz STB linia 100 din fața terminalului.</p>
+                      <p>Coboară la Piața Romană.</p>
+                      <p>Mers pe jos 5-8 minute până la hotel.</p>
+                    </div>
+                    <div>
+                      <p className="font-medium text-white">Aeroportul Băneasa (Aurel Vlaicu - BBU)</p>
+                      <p>Autobuz STB spre Piața Victoriei sau Piața Romană (ex. linia 100).</p>
+                      <p>Dacă cobori la Piața Victoriei, ia metroul M2 o stație până la Piața Romană.</p>
+                      <p>Mers pe jos 5-8 minute până la hotel.</p>
+                    </div>
+                    <div>
+                      <p className="font-medium text-white">Gara de Nord</p>
+                      <p>Metrou până la Piața Victoriei.</p>
+                      <p>Schimbare pe magistrala M2 până la Piața Romană.</p>
+                      <p>Mers pe jos 5-8 minute până la hotel.</p>
+                    </div>
+                    <p className="font-medium text-white">Punct de referință pentru toate rutele: Piața Romană (M2).</p>
+                  </>
+                ) : (
+                  <>
+                    <div>
+                      <p className="font-medium text-white">Otopeni Airport (Henri Coandă - OTP)</p>
+                      <p>Take STB bus line 100 from the terminal area.</p>
+                      <p>Get off at Piața Romană.</p>
+                      <p>Walk 5-8 minutes to the hotel.</p>
+                    </div>
+                    <div>
+                      <p className="font-medium text-white">Băneasa Airport (Aurel Vlaicu - BBU)</p>
+                      <p>Take an STB bus toward Piața Victoriei or Piața Romană (e.g. line 100).</p>
+                      <p>If you get off at Piața Victoriei, take metro M2 one stop to Piața Romană.</p>
+                      <p>Walk 5-8 minutes to the hotel.</p>
+                    </div>
+                    <div>
+                      <p className="font-medium text-white">Gara de Nord</p>
+                      <p>Take the metro to Piața Victoriei.</p>
+                      <p>Transfer to M2 and continue to Piața Romană.</p>
+                      <p>Walk 5-8 minutes to the hotel.</p>
+                    </div>
+                    <p className="font-medium text-white">Reference point for all routes: Piața Romană (M2).</p>
+                  </>
+                )}
+              </div>
+            </details>
+
+            <details className="group rounded-2xl border border-white/25 bg-white/10 px-4 py-3 text-white">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium">
+                <span>{l === "ro" ? "Pe cine pot contacta pentru întrebări?" : "Who can I contact for questions?"}</span>
+                <span className="text-2xl leading-none transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <div className="mt-3 space-y-2 text-white/85">
+                {l === "ro" ? (
+                  <>
+                    <p>Persoanele responsabile de Gala Aniversară de 35 de ani - AIESEC în România sunt:</p>
+                    <p>
+                      Director Organizare: Maria Moga - maria.moga@aiesec.org.ro | +40 733 423 730
+                    </p>
+                    <p>
+                      Project Manager: Ada Popescu - alexandra.popescu@aiesec.org.ro | +40 725 494 514
+                    </p>
+                    <p>
+                      Președinte AIESEC în România: Emil Iftimie - emil.iftimie@aiesec.org.ro | +40 732 262 755
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>The responsible contacts for the 35th Anniversary Gala - AIESEC in Romania are:</p>
+                    <p>
+                      Organizing Director: Maria Moga - maria.moga@aiesec.org.ro | +40 733 423 730
+                    </p>
+                    <p>
+                      Project Manager: Ada Popescu - alexandra.popescu@aiesec.org.ro | +40 725 494 514
+                    </p>
+                    <p>
+                      President of AIESEC in Romania: Emil Iftimie - emil.iftimie@aiesec.org.ro | +40 732 262 755
+                    </p>
+                  </>
+                )}
+              </div>
+            </details>
+          </div>
         </div>
       </section>
     </main>
