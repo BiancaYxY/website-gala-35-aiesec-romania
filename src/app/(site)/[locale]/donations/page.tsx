@@ -42,6 +42,17 @@ function getCommittees(isRo: boolean) {
       ],
     },
     {
+      name: "AIESEC în Constanța",
+      lcStatement: isRo
+        ? "\"AIESEC în Constanța\""
+        : "\"AIESEC in Constanta\"",
+      details: [
+        isRo
+          ? "Detaliile de transfer pentru acest comitet vor fi adăugate în curând."
+          : "Transfer details for this committee will be added soon.",
+      ],
+    },
+    {
       name: "AIESEC în Craiova",
       lcStatement: "\"Embrace the Challenge\"\n\"#oladădebere\"",
       ibanRon: "RO85 RNCB 0140 0184 5387 0001",
@@ -64,6 +75,29 @@ function getCommittees(isRo: boolean) {
       ],
     },
     {
+      name: "AIESEC în Iași",
+      lcStatement: "\"Feel the pressure to go for 1 more\"\n\"Șini Ardi Șel mai Tari?\"",
+      ibanRon: "RO08 RNCB 0175 0336 1532 0001",
+      ibanEuro: "RO78 RNCB 0175 0336 1532 0002",
+      logoSrc: "/pressure.jpg",
+      cardVariant: "pressure",
+      details: [
+        isRo ? "Nume titular: AIESEC Iași" : "Account holder: AIESEC Iași",
+        isRo ? "Cod BIC/SWIFT: RNCBROBU" : "BIC/SWIFT code: RNCBROBU",
+      ],
+    },
+    {
+      name: "AIESEC în Oradea",
+      lcStatement: isRo
+        ? "LC statement: Dezvoltăm tineri implicați civic și profesional în comunitatea din Oradea."
+        : "LC statement: We develop civically and professionally engaged youth in the Oradea community.",
+      ibanRon: "RO20 RNCB 0825 1638 2615 0001",
+      details: [
+        isRo ? "Titular cont: ASOCIAȚIA AIESEC ORADEA" : "Account holder: ASOCIATIA AIESEC ORADEA",
+        isRo ? "Bancă: BCR" : "Bank: BCR",
+      ],
+    },
+    {
       name: "AIESEC în Sibiu",
       lcStatement: isRo
         ? "LC statement: Promovăm colaborarea și dezvoltarea personală a tinerilor din Sibiu."
@@ -77,37 +111,14 @@ function getCommittees(isRo: boolean) {
       ],
     },
     {
-      name: "AIESEC în Iași",
-      lcStatement: "\"Feel the pressure to go for 1 more\"\n\"Șini Ardi Șel mai Tari?\"",
-      ibanRon: "RO08 RNCB 0175 0336 1532 0001",
-      ibanEuro: "RO78 RNCB 0175 0336 1532 0002",
-      logoSrc: "/pressure.jpg",
-      cardVariant: "pressure",
-      details: [
-        isRo ? "Nume titular: AIESEC Iași" : "Account holder: AIESEC Iași",
-        isRo ? "Cod BIC/SWIFT: RNCBROBU" : "BIC/SWIFT code: RNCBROBU",
-      ],
-    },
-    {
-      name: "AIESEC în Constanța",
+      name: "AIESEC în Suceava",
       lcStatement: isRo
-        ? "\"AIESEC în Constanța\""
-        : "\"AIESEC in Constanta\"",
+        ? "\"AIESEC în Suceava\""
+        : "\"AIESEC in Suceava\"",
       details: [
         isRo
           ? "Detaliile de transfer pentru acest comitet vor fi adăugate în curând."
           : "Transfer details for this committee will be added soon.",
-      ],
-    },
-    {
-      name: "AIESEC în Oradea",
-      lcStatement: isRo
-        ? "LC statement: Dezvoltăm tineri implicați civic și profesional în comunitatea din Oradea."
-        : "LC statement: We develop civically and professionally engaged youth in the Oradea community.",
-      ibanRon: "RO20 RNCB 0825 1638 2615 0001",
-      details: [
-        isRo ? "Titular cont: ASOCIAȚIA AIESEC ORADEA" : "Account holder: ASOCIATIA AIESEC ORADEA",
-        isRo ? "Bancă: BCR" : "Bank: BCR",
       ],
     },
     {
@@ -132,17 +143,6 @@ function getCommittees(isRo: boolean) {
           ? "Titular cont: ASOCIAȚIA AIESEC ÎN UNIVERSITATEA DIN BUCUREȘTI"
           : "Account holder: ASOCIATIA AIESEC IN UNIVERSITATEA DIN BUCURESTI",
         isRo ? "Bancă: BCR" : "Bank: BCR",
-      ],
-    },
-    {
-      name: "AIESEC în Suceava",
-      lcStatement: isRo
-        ? "\"AIESEC în Suceava\""
-        : "\"AIESEC in Suceava\"",
-      details: [
-        isRo
-          ? "Detaliile de transfer pentru acest comitet vor fi adăugate în curând."
-          : "Transfer details for this committee will be added soon.",
       ],
     },
   ];

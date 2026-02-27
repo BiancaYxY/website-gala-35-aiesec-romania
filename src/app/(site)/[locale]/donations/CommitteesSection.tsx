@@ -54,8 +54,8 @@ export function CommitteesSection({
       </h2>
       <p className="mt-2 max-w-3xl text-sm text-muted md:text-base">
         {isRo
-          ? "Placeholder cards pentru logo + descriere scurtă. Fiecare card poate fi înlocuit ulterior cu identitatea vizuală și textul final."
-          : "Placeholder cards for logo + short description. Each card can be replaced later with final visual identity and text."}
+          ? "Generația 26.27"
+          : "Generation 26.27"}
       </p>
 
       <div className="mt-5">
