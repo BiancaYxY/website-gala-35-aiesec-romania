@@ -11,10 +11,10 @@ const league = League_Spartan({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" style={{ colorScheme: "only dark" }}>
+    <html lang="en" style={{ colorScheme: "only light" }}>
       <head>
-        <meta name="color-scheme" content="dark" />
-        <meta name="supported-color-schemes" content="dark" />
+        <meta name="color-scheme" content="light" />
+        <meta name="supported-color-schemes" content="light" />
         <meta name="theme-color" content="#0a0c16" />
       </head>
       <body className={`${league.variable} min-h-screen bg-background text-foreground font-sans`}>
