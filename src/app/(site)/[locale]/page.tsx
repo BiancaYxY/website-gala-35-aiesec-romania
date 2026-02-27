@@ -80,7 +80,7 @@ export default async function Home({
         <Link
           href={"https://bit.ly/AIESECRomaniaGala35"}
           target="_blank"
-          className="group mx-auto block max-w-3xl rounded-3xl bg-gold px-6 py-5 text-center text-black shadow-[0_16px_40px_rgba(226,192,49,0.35)] ring-1 ring-white/35 transition duration-200 hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(226,192,49,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          className="blink-cta group mx-auto block max-w-3xl rounded-3xl bg-gold px-6 py-5 text-center text-black shadow-[0_16px_40px_rgba(226,192,49,0.35)] ring-1 ring-white/35 transition duration-200 hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(226,192,49,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
         >
           <p className="text-xl font-bold sm:text-2xl">
             {l === "ro" ? "Înscrie-te aici #pentruRomânia" : "Register here #pentruRomania"}

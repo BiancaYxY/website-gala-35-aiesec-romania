@@ -59,6 +59,44 @@ html {
         transparent 45%),
       rgb(var(--bg));
   }
+
+  @keyframes cta-blink {
+    0%,
+    100% {
+      box-shadow:
+        0 14px 34px rgba(255, 255, 255, 0.24),
+        0 0 0 2px rgba(255, 255, 255, 0.16),
+        0 0 24px rgba(255, 255, 255, 0.3);
+    }
+    22% {
+      box-shadow:
+        0 18px 46px rgba(255, 255, 255, 0.4),
+        0 0 0 2px rgba(255, 255, 255, 0.26),
+        0 0 46px rgba(255, 255, 255, 0.56);
+    }
+    44% {
+      box-shadow:
+        0 14px 36px rgba(255, 255, 255, 0.28),
+        0 0 0 2px rgba(255, 255, 255, 0.18),
+        0 0 26px rgba(255, 255, 255, 0.34);
+    }
+    66% {
+      box-shadow:
+        0 22px 54px rgba(255, 255, 255, 0.52),
+        0 0 0 3px rgba(255, 255, 255, 0.3),
+        0 0 58px rgba(255, 255, 255, 0.72);
+    }
+    84% {
+      box-shadow:
+        0 15px 38px rgba(255, 255, 255, 0.32),
+        0 0 0 2px rgba(255, 255, 255, 0.19),
+        0 0 30px rgba(255, 255, 255, 0.4);
+    }
+  }
+
+  .blink-cta {
+    animation: cta-blink 2.4s ease-in-out infinite;
+  }
 }
 
 body {
@@ -108,5 +146,9 @@ svg {
     transform: none;
     filter: none;
     transition: none;
+  }
+
+  .blink-cta {
+    animation: none;
   }
 }
