@@ -11,7 +11,7 @@ const league = League_Spartan({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" style={{ colorScheme: "dark" }}>
+    <html lang="en" style={{ colorScheme: "only dark" }}>
       <head>
         <meta name="color-scheme" content="dark" />
         <meta name="supported-color-schemes" content="dark" />
