@@ -1,6 +1,7 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
 import { GalaCountdown } from "@/components/home/GalaCountdown";
+import { SheratonCarousel } from "@/components/home/SheratonCarousel";
 import { type Locale } from "@/i18n/getDict";
 
 export default async function Home({
@@ -21,7 +22,7 @@ export default async function Home({
           active:
             "Dragi membri activi, Gala 35 este oportunitatea perfectă de a înțelege istoria AIESEC în România și de a crea noi conexiuni cu cei ce au stat cândva în locul vostru, învățând din reușitele lor.",
           logistics:
-            "Vă așteptăm pe 24 și 25 aprilie, la București. Locația evenimentului și agenda vor fi trimise în curând❤️‍🔥",
+            "Vă așteptăm pe 24 și 25 aprilie, la București. Agenda evenimentului va fi trimisă în curând❤️‍🔥",
           closing: "Ne vedem curând ✨",
           signature: "MC Hora și CC Gala 35 💃🏻",
         }
@@ -34,7 +35,7 @@ export default async function Home({
           active:
             "Dear active members, Gala 35 is the perfect opportunity to understand AIESEC in Romania's history and create new connections with those who once stood in your place, learning from their achievements.",
           logistics:
-            "We are waiting for you on April 24th and 25th, in Bucharest. The event location and agenda will be shared soon❤️‍🔥",
+            "We are waiting for you on April 24th and 25th, in Bucharest. The event agenda will be shared soon❤️‍🔥",
           closing: "See you soon ✨",
           signature: "MC Hora and CC Gala 35 💃🏻",
         };
@@ -61,6 +62,15 @@ export default async function Home({
           <p>{homeCopy.logistics}</p>
           <p>{homeCopy.closing}</p>
           <p className="font-medium text-foreground">{homeCopy.signature}</p>
+        </div>
+        <div className="mx-auto max-w-3xl">
+          <SheratonCarousel
+            venueLabel={l === "ro" ? "Locație" : "Venue"}
+            venueName={l === "ro" ? "Hotel Sheraton București" : "Sheraton Hotel Bucharest"}
+            addressLabel={l === "ro" ? "Adresa" : "Address"}
+            addressText="Calea Dorobanților 5-7, București, România, 010551"
+            addressHref="https://maps.app.goo.gl/wnx8PA1WiA7sLFaJ9"
+          />
         </div>
       </section>
 
