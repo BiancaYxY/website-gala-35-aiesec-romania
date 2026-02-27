@@ -8,6 +8,7 @@ import type { Participant } from "@/lib/supabase/participants";
 type ParticipantsLabels = {
   title: string;
   filterByGeneration: string;
+  filterByLc?: string;
   all: string;
   loadMore: string;
   noParticipants: string;
@@ -23,9 +24,28 @@ type ParticipantsApiResponse = {
 type ParticipantsGridProps = {
   labels: ParticipantsLabels;
   initialGeneration?: string;
+  initialLc?: string;
 };
 
-const PAGE_SIZE = 12;
+const PAGE_SIZE = 10;
+const LC_OPTIONS = [
+  "Arad",
+  "Brasov",
+  "Bucharest",
+  "Cluj-Napoca",
+  "Constanta",
+  "Craiova",
+  "Galati",
+  "Iasi",
+  "Oradea",
+  "Sibiu",
+  "Suceava",
+  "Pitesti",
+  "Targu-Mures",
+  "Timisoara",
+  "University of Bucharest",
+  "Other",
+] as const;
 
 function SkeletonCard() {
   return (
@@ -37,23 +57,25 @@ function SkeletonCard() {
   );
 }
 
-export function ParticipantsGrid({ labels, initialGeneration = "all" }: ParticipantsGridProps) {
+export function ParticipantsGrid({ labels, initialGeneration = "all", initialLc = "all" }: ParticipantsGridProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const [selectedGeneration, setSelectedGeneration] = useState(initialGeneration || "all");
+  const [selectedLc, setSelectedLc] = useState(initialLc || "all");
   const [yearInput, setYearInput] = useState(initialGeneration === "all" ? "" : initialGeneration);
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true);
-  const [loadingMore, setLoadingMore] = useState(false);
+  const [loadingPage, setLoadingPage] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function fetchPage(args: { generation: string; page: number; reset: boolean }) {
+  async function fetchPage(args: { generation: string; lc: string; page: number }) {
     const params = new URLSearchParams();
     params.set("gen", args.generation);
+    params.set("lc", args.lc);
     params.set("page", String(args.page));
     params.set("pageSize", String(PAGE_SIZE));
 
@@ -67,19 +89,14 @@ export function ParticipantsGrid({ labels, initialGeneration = "all" }: Particip
     setHasMore(Boolean(data.hasMore));
     setPage(args.page);
 
-    if (args.reset) {
-      setParticipants(data.items ?? []);
-      return;
-    }
-
-    setParticipants((prev) => [...prev, ...(data.items ?? [])]);
+    setParticipants(data.items ?? []);
   }
 
-  async function refresh(generation: string) {
+  async function refresh(generation: string, lc: string) {
     setInitialLoading(true);
     setError(null);
     try {
-      await fetchPage({ generation, page: 0, reset: true });
+      await fetchPage({ generation, lc, page: 0 });
     } catch (err) {
       const message = err instanceof Error ? err.message : labels.errorLoading;
       setError(message);
@@ -92,18 +109,24 @@ export function ParticipantsGrid({ labels, initialGeneration = "all" }: Particip
 
   useEffect(() => {
     const genFromUrl = searchParams.get("gen") || "all";
+    const lcFromUrl = searchParams.get("lc") || "all";
     setSelectedGeneration(genFromUrl);
+    setSelectedLc(lcFromUrl);
     setYearInput(genFromUrl === "all" ? "" : genFromUrl);
-    void refresh(genFromUrl);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    void refresh(genFromUrl, lcFromUrl);
   }, [searchParams]);
 
-  const updateUrl = (nextGen: string) => {
+  const updateUrl = (nextGen: string, nextLc: string) => {
     const params = new URLSearchParams(searchParams.toString());
     if (nextGen === "all") {
       params.delete("gen");
     } else {
       params.set("gen", nextGen);
+    }
+    if (nextLc === "all") {
+      params.delete("lc");
+    } else {
+      params.set("lc", nextLc);
     }
 
     const query = params.toString();
@@ -113,7 +136,13 @@ export function ParticipantsGrid({ labels, initialGeneration = "all" }: Particip
   const onChangeGeneration = (nextGen: string) => {
     if (nextGen === selectedGeneration) return;
     setSelectedGeneration(nextGen);
-    updateUrl(nextGen);
+    updateUrl(nextGen, selectedLc);
+  };
+
+  const onChangeLc = (nextLc: string) => {
+    if (nextLc === selectedLc) return;
+    setSelectedLc(nextLc);
+    updateUrl(selectedGeneration, nextLc);
   };
 
   const onYearInputChange = (value: string) => {
@@ -130,18 +159,18 @@ export function ParticipantsGrid({ labels, initialGeneration = "all" }: Particip
     }
   };
 
-  const onLoadMore = async () => {
-    if (loadingMore || !hasMore) return;
-    setLoadingMore(true);
+  const onChangePage = async (nextPage: number) => {
+    if (loadingPage || nextPage < 0) return;
+    setLoadingPage(true);
     setError(null);
 
     try {
-      await fetchPage({ generation: selectedGeneration, page: page + 1, reset: false });
+      await fetchPage({ generation: selectedGeneration, lc: selectedLc, page: nextPage });
     } catch (err) {
       const message = err instanceof Error ? err.message : labels.errorLoading;
       setError(message);
     } finally {
-      setLoadingMore(false);
+      setLoadingPage(false);
     }
   };
 
@@ -175,6 +204,31 @@ export function ParticipantsGrid({ labels, initialGeneration = "all" }: Particip
             {labels.all}
           </button>
         </div>
+        <label htmlFor="lc-filter" className="mb-2 mt-4 block text-sm font-medium text-foreground">
+          {labels.filterByLc || "Filter by LC"}
+        </label>
+        <div className="flex items-center gap-2">
+          <select
+            id="lc-filter"
+            value={selectedLc}
+            onChange={(e) => onChangeLc(e.target.value)}
+            className="block w-full rounded-xl border border-subtle bg-background px-3 py-3 text-sm text-foreground"
+          >
+            <option value="all">{labels.all}</option>
+            {LC_OPTIONS.map((lc) => (
+              <option key={lc} value={lc}>
+                {lc}
+              </option>
+            ))}
+          </select>
+          <button
+            type="button"
+            onClick={() => onChangeLc("all")}
+            className="rounded-xl bg-gold px-4 py-3 text-sm text-black transition hover:brightness-110"
+          >
+            {labels.all}
+          </button>
+        </div>
       </div>
 
       {error && <div className="rounded-xl border border-red-400/40 bg-red-900/20 p-3 text-sm text-red-100">{error}</div>}
@@ -191,24 +245,30 @@ export function ParticipantsGrid({ labels, initialGeneration = "all" }: Particip
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          <div className="grid items-start grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {participants.map((participant) => (
               <ParticipantCard key={participant.id} participant={participant} />
             ))}
           </div>
 
-          {hasMore && (
-            <div className="flex justify-center">
-              <button
-                type="button"
-                onClick={onLoadMore}
-                disabled={loadingMore}
-                className="rounded-2xl bg-gold px-6 py-3 text-sm font-semibold text-black transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
-              >
-                {loadingMore ? `${labels.loadMore}...` : labels.loadMore}
-              </button>
-            </div>
-          )}
+          <div className="flex items-center justify-center gap-3">
+            <button
+              type="button"
+              onClick={() => onChangePage(page - 1)}
+              disabled={loadingPage || page === 0}
+              className="rounded-2xl border border-subtle bg-background px-6 py-3 text-sm font-semibold text-foreground transition hover:bg-background/80 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              Previous
+            </button>
+            <button
+              type="button"
+              onClick={() => onChangePage(page + 1)}
+              disabled={loadingPage || !hasMore}
+              className="rounded-2xl bg-gold px-6 py-3 text-sm font-semibold text-black transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
+            >
+              Next
+            </button>
+          </div>
         </>
       )}
     </section>

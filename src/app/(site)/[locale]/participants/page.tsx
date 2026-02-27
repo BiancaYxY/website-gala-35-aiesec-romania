@@ -6,10 +6,10 @@ export default async function ParticipantsPage({
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ gen?: string }>;
+  searchParams: Promise<{ gen?: string; lc?: string }>;
 }) {
   const { locale } = await params;
-  const { gen } = await searchParams;
+  const { gen, lc } = await searchParams;
 
   const l = locale as Locale;
   const dict = getDict(l);
@@ -21,9 +21,11 @@ export default async function ParticipantsPage({
       <div className="mt-6">
         <ParticipantsGrid
           initialGeneration={gen ?? "all"}
+          initialLc={lc ?? "all"}
           labels={{
             title: t(dict, "participants.title"),
             filterByGeneration: t(dict, "participants.filterByGeneration"),
+            filterByLc: l === "ro" ? "Filtrează după LC" : "Filter by LC",
             all: t(dict, "participants.all"),
             loadMore: t(dict, "participants.loadMore"),
             noParticipants: t(dict, "participants.noParticipants"),

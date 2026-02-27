@@ -51,6 +51,10 @@ function normalizeGeneration(value: string | null | undefined): string {
   return (value ?? "").trim();
 }
 
+function normalizeLc(value: string | null | undefined): string {
+  return (value ?? "").trim();
+}
+
 function parseYear(value: string): number | null {
   if (!/^\d{4}$/.test(value)) return null;
   const parsed = Number.parseInt(value, 10);
@@ -92,6 +96,7 @@ function generationMatchesFilter(generation: string, filter: string): boolean {
 
 export async function listParticipantsByPage(args: {
   generation?: string;
+  lc?: string;
   page: number;
   pageSize: number;
 }): Promise<ParticipantsPageResult> {
@@ -102,9 +107,14 @@ export async function listParticipantsByPage(args: {
   params.set("select", "id,name,generation,photo_url,phone_number,email,linkedin,lc");
   params.set("order", "name.asc");
   const generation = normalizeGeneration(args.generation);
+  const lc = normalizeLc(args.lc);
 
   const rows = await supabaseSelect<Participant[]>(params);
-  const filteredRows = rows.filter((row) => generationMatchesFilter(normalizeGeneration(row.generation), generation));
+  const filteredRows = rows.filter((row) => {
+    const generationMatches = generationMatchesFilter(normalizeGeneration(row.generation), generation);
+    const lcMatches = !lc || lc.toLowerCase() === "all" ? true : normalizeLc(row.lc) === lc;
+    return generationMatches && lcMatches;
+  });
   const offset = page * pageSize;
   const pageRows = filteredRows.slice(offset, offset + pageSize + 1);
   const hasMore = pageRows.length > pageSize;

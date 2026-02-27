@@ -39,6 +39,22 @@ export default async function Home({
           closing: "See you soon ✨",
           signature: "MC Hora and CC Gala 35 💃🏻",
         };
+  const calendarTitle =
+    l === "ro"
+      ? "Gala Aniversară AIESEC în România - 35 de ani"
+      : "AIESEC in Romania Anniversary Gala - 35 Years";
+  const calendarDetails =
+    l === "ro"
+      ? "Eveniment desfășurat în perioada 24-25 aprilie la Hotel Sheraton București. Mai multe detalii pe site."
+      : "Event taking place on April 24-25 at Sheraton Hotel Bucharest. More details on the website.";
+  const calendarParams = new URLSearchParams({
+    action: "TEMPLATE",
+    text: calendarTitle,
+    dates: "20260424/20260426",
+    details: calendarDetails,
+    location: "Calea Dorobanților 5-7, București, România, 010551",
+  });
+  const calendarUrl = `https://calendar.google.com/calendar/render?${calendarParams.toString()}`;
 
   return (
     <main className="mx-auto max-w-6xl px-4 pt-1 pb-6">
@@ -85,6 +101,13 @@ export default async function Home({
           <p className="text-xl font-bold sm:text-2xl">
             {l === "ro" ? "Înscrie-te aici #pentruRomânia" : "Register here #pentruRomania"}
           </p>
+        </Link>
+        <Link
+          href={calendarUrl}
+          target="_blank"
+          className="mx-auto mt-12 block max-w-3xl rounded-2xl border border-subtle bg-background/70 px-6 py-3 text-center text-sm font-bold text-gold transition hover:bg-background/90"
+        >
+          {l === "ro" ? "Adaugă evenimentul în Google Calendar" : "Add event to Google Calendar"}
         </Link>
 
         <div className="mx-auto mt-0.5 w-full max-w-3xl overflow-hidden rounded-2xl">

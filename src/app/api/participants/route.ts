@@ -5,12 +5,14 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
 
   const generation = searchParams.get("gen") ?? "all";
+  const lc = searchParams.get("lc") ?? "all";
   const page = Number.parseInt(searchParams.get("page") ?? "0", 10);
   const pageSize = Number.parseInt(searchParams.get("pageSize") ?? "12", 10);
 
   try {
     const participants = await listParticipantsByPage({
       generation,
+      lc,
       page: Number.isNaN(page) ? 0 : page,
       pageSize: Number.isNaN(pageSize) ? 12 : pageSize,
     });
