@@ -2,6 +2,7 @@ import "@/app/globals.css";
 import { League_Spartan } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { Analytics } from "@vercel/analytics/next";
 
 const league = League_Spartan({
   subsets: ["latin"],
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="flex-1">{children}</div>
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   );
