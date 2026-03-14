@@ -159,6 +159,14 @@ export default async function DonationsPage({
 
   return (
     <main className="mx-auto w-full max-w-6xl px-4 py-8 md:py-12">
+      <div className="mb-4 flex justify-center md:mb-6">
+        <a
+          href="#local-committees"
+          className="inline-flex items-center rounded-full border border-[#b13a4f]/40 bg-[#4a0d18]/85 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-gold/60 hover:bg-[#5b1725] hover:text-gold"
+        >
+          {isRo ? "Către Comitete Locale" : "Skip to Local Committees"}
+        </a>
+      </div>
       <section className="rounded-3xl border border-[#b13a4f]/55 bg-[linear-gradient(to_bottom,_#4a0d18_0%,_#5b2a2f_28%,_#145f36_100%)] p-5 text-foreground shadow-[0_24px_48px_rgba(0,0,0,0.3)] md:p-8">
         <div className="mt-5 space-y-4 text-justify text-[15px] leading-relaxed text-white/90 md:text-base">
           {isRo ? (
@@ -170,7 +178,7 @@ export default async function DonationsPage({
                 lor.
               </p>
               <p>
-                Astăzi, cu peste 700 de membri în fiecare an, o creștere continuă a programelor de schimb și curajul de a
+                Astăzi, cu peste 700 de membri în fiecare an, o creștere continuă a programelor de exchange și curajul de a
                 depăși orice provocare, AIESEC în România continuă să prospere ca una dintre cele mai puternice entități la
                 nivel global din punct de vedere al numărului de schimburi livrate.
               </p>

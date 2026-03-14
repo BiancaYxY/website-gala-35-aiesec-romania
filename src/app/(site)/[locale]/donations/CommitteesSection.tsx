@@ -57,7 +57,8 @@ export function CommitteesSection({
 
   return (
     <section
-      className="mt-0 rounded-3xl border border-subtle bg-gradient-to-b from-[rgb(var(--navy)/0.45)] to-[rgb(var(--bg)/0.88)] p-5 shadow-[0_18px_40px_rgba(0,0,0,0.24)] md:mt-0 md:p-6"
+      id="local-committees"
+      className="mt-0 scroll-mt-24 rounded-3xl border border-subtle bg-gradient-to-b from-[rgb(var(--navy)/0.45)] to-[rgb(var(--bg)/0.88)] p-5 shadow-[0_18px_40px_rgba(0,0,0,0.24)] md:mt-0 md:p-6"
       data-sr-skip="true"
     >
       <h2 className="text-xl font-semibold text-foreground md:text-3xl">
