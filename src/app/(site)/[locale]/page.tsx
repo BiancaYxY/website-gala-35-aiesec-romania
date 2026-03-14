@@ -22,7 +22,7 @@ export default async function Home({
           active:
             "Dragi membri activi, Gala 35 este oportunitatea perfectă de a înțelege istoria AIESEC în România și de a crea noi conexiuni cu cei ce au stat cândva în locul vostru, învățând din reușitele lor.",
           logistics:
-            "Vă așteptăm pe 24 și 25 Aprilie, la București. Agenda evenimentului va fi trimisă în curând❤️‍🔥",
+            "Vă așteptăm pe 24 și 25 Aprilie, la București❤️‍🔥",
           closing: "Ne vedem curând ✨",
           signature: "MC Hora și CC Dor🪻💃🏻",
         }
