@@ -89,21 +89,21 @@ function getCommittees(isRo: boolean): Committee[] {
     },
     {
       name: "AIESEC în Oradea",
-      lcStatement: isRo
-        ? "LC statement: Dezvoltăm tineri implicați civic și profesional în comunitatea din Oradea."
-        : "LC statement: We develop civically and professionally engaged youth in the Oradea community.",
-      ibanRon: "RO20 RNCB 0825 1638 2615 0001",
+      lcStatement: "\"Cea mai tare din popor\"\n\"E pălinca de Bihor\"",
+      ibanRon: "RO20RNCB0825163826150001",
+      logoSrc: "/strike.png",
+      cardVariant: "strike",
       details: [
-        isRo ? "Titular cont: ASOCIAȚIA AIESEC ORADEA" : "Account holder: ASOCIATIA AIESEC ORADEA",
+        isRo ? "Titular cont: ASOCIATIA AIESEC ORADEA" : "Account holder: ASOCIATIA AIESEC ORADEA",
         isRo ? "Bancă: BCR" : "Bank: BCR",
       ],
     },
     {
       name: "AIESEC în Sibiu",
-      lcStatement: isRo
-        ? "LC statement: Promovăm colaborarea și dezvoltarea personală a tinerilor din Sibiu."
-        : "LC statement: We promote collaboration and personal growth for young people in Sibiu.",
+      lcStatement: "\"To inspire, we draw the fire!\"\n\"WHO ARE WE? FIREstarters\"",
       ibanRon: "RO98 RNCB 0233 1312 1159 0001",
+      logoSrc: "/architects.png",
+      cardVariant: "architects",
       details: [
         isRo
           ? "Titular cont: ASOCIAȚIA INTERNAȚIONALĂ A STUDENȚILOR ÎN ECONOMIE ȘI MANAGEMENT – AIESEC"
@@ -113,13 +113,12 @@ function getCommittees(isRo: boolean): Committee[] {
     },
     {
       name: "AIESEC în Suceava",
-      lcStatement: isRo
-        ? "\"AIESEC în Suceava\""
-        : "\"AIESEC in Suceava\"",
+      lcStatement: "\"Ce se aude-n Bucovina?\"\n\"Țipă AIESEC bată-l vina\"",
+      ibanRon: "RO54BTRLRONCRT0CW9821602",
+      logoSrc: "/vlastar.jpeg",
+      cardVariant: "vlastar",
       details: [
-        isRo
-          ? "Detaliile de transfer pentru acest comitet vor fi adăugate în curând."
-          : "Transfer details for this committee will be added soon.",
+        isRo ? "Titular cont: Matei Elena Roxana" : "Account holder: Matei Elena Roxana",
       ],
     },
     {

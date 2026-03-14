@@ -12,7 +12,18 @@ export type Committee = {
   ibanRon?: string;
   details?: string[];
   logoSrc?: string;
-  cardVariant?: "evermore" | "unleashed" | "dauntless" | "frostbite" | "hustle" | "pressure" | "darts" | "rooftop";
+  cardVariant?:
+    | "evermore"
+    | "unleashed"
+    | "dauntless"
+    | "frostbite"
+    | "hustle"
+    | "pressure"
+    | "darts"
+    | "rooftop"
+    | "architects"
+    | "vlastar"
+    | "strike";
 };
 
 function normalizeText(value: string) {
@@ -90,6 +101,9 @@ export function CommitteesSection({
             const isPressure = committee.cardVariant === "pressure";
             const isDarts = committee.cardVariant === "darts";
             const isRooftop = committee.cardVariant === "rooftop";
+            const isArchitects = committee.cardVariant === "architects";
+            const isVlastar = committee.cardVariant === "vlastar";
+            const isStrike = committee.cardVariant === "strike";
             const formattedStatement = isDauntless
               ? committee.lcStatement
               : committee.lcStatement?.replace(/\s*,?\s*(#\S+)/g, "\n\n$1");
@@ -114,6 +128,12 @@ export function CommitteesSection({
                               ? "border-[#de3e50]/55 bg-gradient-to-br from-[#0c0c0f]/95 via-[#1a1a20]/92 to-[#0a0a0d]/95 hover:bg-gradient-to-br hover:from-[#1a1015] hover:via-[#25121b] hover:to-[#11090d]"
                             : isRooftop
                               ? "border-[#d5b17a]/55 bg-gradient-to-br from-[#2b1f14]/95 via-[#3b2b1d]/92 to-[#1d140d]/95 hover:bg-gradient-to-br hover:from-[#3a291a] hover:via-[#4f3724] hover:to-[#261a11]"
+                              : isArchitects
+                                ? "border-[#e28a45]/55 bg-gradient-to-br from-[#271710]/95 via-[#4e2412]/92 to-[#f4d88e]/88 hover:bg-gradient-to-br hover:from-[#342017] hover:via-[#633018] hover:to-[#f8dfa3]"
+                                : isVlastar
+                                  ? "border-[#6bc447]/55 bg-gradient-to-br from-[#07270a]/95 via-[#125916]/92 to-[#73bf2f]/88 hover:bg-gradient-to-br hover:from-[#0c3410] hover:via-[#19711d] hover:to-[#86d643]"
+                                  : isStrike
+                                    ? "border-[#f1d24d]/55 bg-gradient-to-br from-[#0a1018]/95 via-[#16324c]/92 to-[#2d2f35]/95 hover:bg-gradient-to-br hover:from-[#111a26] hover:via-[#1f4568] hover:to-[#3a3d46]"
                       : "border-subtle bg-[rgb(var(--card)/0.62)] hover:bg-[rgb(var(--navy)/0.72)]"
                 }`}
               >
@@ -136,6 +156,12 @@ export function CommitteesSection({
                               ? "border border-[#ef6676]/60 bg-[#1b0f14] text-[#ffe6ea]"
                             : isRooftop
                               ? "border border-[#e5c38f]/60 bg-[#332417] text-[#ffedcf]"
+                              : isArchitects
+                                ? "border border-[#e59a5d]/60 bg-[#ffe6b0] text-[#2a1820]"
+                                : isVlastar
+                                  ? "border border-[#80dc58]/60 bg-[#103d12] text-[#efffdc]"
+                                  : isStrike
+                                    ? "border border-[#f2d95b]/60 bg-[#12263d] text-[#eef7ff]"
                         : "border border-dashed border-white/30 bg-[rgb(var(--bg)/0.45)] text-muted"
                   }`}
                 >
@@ -169,6 +195,12 @@ export function CommitteesSection({
                                     ? "text-[#ffe9ee]"
                                     : isRooftop
                                       ? "text-[#ffefd4]"
+                                      : isArchitects
+                                        ? "text-[#fff0d2]"
+                                        : isVlastar
+                                          ? "text-[#eaffd8]"
+                                          : isStrike
+                                            ? "text-[#f5f9ff]"
                             : "text-foreground"
                     }`}
                   >
@@ -195,6 +227,12 @@ export function CommitteesSection({
                                     ? "text-[#ffd2d9]"
                                     : isRooftop
                                       ? "text-[#f8dfb9]"
+                                      : isArchitects
+                                        ? "text-[#fff0ce]"
+                                        : isVlastar
+                                          ? "text-[#dfffcf]"
+                                          : isStrike
+                                            ? "text-[#d9ecff]"
                             : "text-muted"
                     }`}
                   >
@@ -220,6 +258,12 @@ export function CommitteesSection({
                             ? "border-[#ef6676]/40 bg-[#190c12]/70 text-[#ffe8ec] font-bold italic whitespace-pre-line"
                           : isRooftop
                             ? "border-[#e5c38f]/40 bg-[#2c1f14]/70 text-[#ffefd4] font-bold italic whitespace-pre-line"
+                            : isArchitects
+                              ? "border-[#d98947]/45 bg-[#fff0c2]/85 text-[#3a1e12] font-bold italic whitespace-pre-line"
+                              : isVlastar
+                                ? "border-[#6dc84d]/40 bg-[#0d3510]/70 text-[#ebffd9] font-bold italic whitespace-pre-line"
+                                : isStrike
+                                  ? "border-[#f1d24d]/45 bg-[#102133]/75 text-[#f5fbff] font-bold italic whitespace-pre-line"
                           : "border-subtle bg-[rgb(var(--bg)/0.35)] text-foreground/90 whitespace-pre-line"
                     }`}
                   >
@@ -246,6 +290,12 @@ export function CommitteesSection({
                                     ? "text-[#ffd2d9]"
                                     : isRooftop
                                       ? "text-[#f8dfb9]"
+                                      : isArchitects
+                                        ? "text-[#fff0ce]"
+                                        : isVlastar
+                                          ? "text-[#dfffcf]"
+                                          : isStrike
+                                            ? "text-[#d9ecff]"
                             : "text-muted"
                     }`}
                   >

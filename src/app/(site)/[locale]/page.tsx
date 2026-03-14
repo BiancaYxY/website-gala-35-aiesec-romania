@@ -200,7 +200,7 @@ export default async function Home({
                   <>
                     <p>
                       Cazarea este disponibilă la <em>Hotel Sheraton</em>, contra cost, atât pentru seara de <em>24</em>,
-                      seara de <em>25</em>, cât și pentru ambele. Costurile cazării nu sunt suportate de AIESEC România.
+                      seara de <em>25</em>, cât și pentru ambele. Costurile cazării nu sunt acoperite de AIESEC România.
                     </p>
                     <p>
                       Vă puteți asigura cazarea completând <em>formularul de înscriere</em>, alegând opțiunea de cazare.

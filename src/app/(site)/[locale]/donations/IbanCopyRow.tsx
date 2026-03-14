@@ -13,7 +13,18 @@ export function IbanCopyRow({
   value: string;
   copiedLabel: string;
   copyLabel: string;
-  variant?: "evermore" | "unleashed" | "dauntless" | "frostbite" | "hustle" | "pressure" | "darts" | "rooftop";
+  variant?:
+    | "evermore"
+    | "unleashed"
+    | "dauntless"
+    | "frostbite"
+    | "hustle"
+    | "pressure"
+    | "darts"
+    | "rooftop"
+    | "architects"
+    | "vlastar"
+    | "strike";
 }) {
   const [copied, setCopied] = useState(false);
 
@@ -52,6 +63,12 @@ export function IbanCopyRow({
                   ? "border-[#ef6676]/55 bg-[#3a1019] text-[#ffe9ed] hover:border-[#ff96a3] hover:bg-[#531523]"
                 : variant === "rooftop"
                   ? "border-[#e5c38f]/55 bg-[#4a341f] text-[#ffefd3] hover:border-[#f2d09c] hover:bg-[#62472d]"
+                  : variant === "architects"
+                    ? "border-[#e58842]/55 bg-[#4f2410] text-[#fff0d2] hover:border-[#f3a564] hover:bg-[#693015]"
+                    : variant === "vlastar"
+                      ? "border-[#6fcf49]/55 bg-[#124d13] text-[#e8ffd7] hover:border-[#90e665] hover:bg-[#1a6619]"
+                      : variant === "strike"
+                        ? "border-[#f0d14f]/55 bg-[#13263c] text-[#eef7ff] hover:border-[#ffe475] hover:bg-[#1b3a59]"
                 : "border-subtle bg-[rgb(var(--navy)/0.82)] text-foreground hover:border-[rgb(var(--gold)/0.6)] hover:bg-[rgb(var(--navy)/0.95)]"
           }`}
           aria-label={`${copyLabel} ${label}`}
