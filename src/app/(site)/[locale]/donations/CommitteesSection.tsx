@@ -151,7 +151,7 @@ export function CommitteesSection({
                       : isUnleashed
                         ? "border border-[#74bcff]/60 bg-[#0d2742] text-[#d6ecff]"
                         : isDauntless
-                          ? "border border-[#f29a44]/60 bg-[#3b190a] text-[#ffd7b0]"
+                          ? "border border-transparent bg-transparent text-[#ffd7b0]"
                         : isFrostbite
                           ? "border border-[#9ddfff]/60 bg-[#0c2b45] text-[#d9f2ff]"
                           : isHustle
@@ -163,9 +163,9 @@ export function CommitteesSection({
                             : isRooftop
                               ? "border border-[#e5c38f]/60 bg-[#332417] text-[#ffedcf]"
                               : isArchitects
-                                ? "border border-[#e59a5d]/60 bg-[#ffe6b0] text-[#2a1820]"
-                                : isVlastar
-                                  ? "border border-[#80dc58]/60 bg-[#103d12] text-[#efffdc]"
+                              ? "border border-[#e59a5d]/60 bg-[#ffe6b0] text-[#2a1820]"
+                              : isVlastar
+                                  ? "border border-transparent bg-transparent text-[#efffdc]"
                                   : isStrike
                                     ? "border border-[#f2d95b]/60 bg-[#12263d] text-[#eef7ff]"
                                     : isFrequency
@@ -181,7 +181,7 @@ export function CommitteesSection({
                       height={64}
                       className={`h-full w-full ${
                         useTransparentLogoTreatment
-                          ? "object-contain p-1 mix-blend-multiply"
+                          ? "object-contain p-1"
                           : "object-cover"
                       }`}
                     />
