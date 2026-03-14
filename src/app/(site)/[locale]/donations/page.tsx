@@ -113,7 +113,7 @@ function getCommittees(isRo: boolean): Committee[] {
     },
     {
       name: "AIESEC în Suceava",
-      lcStatement: "\"Ce se aude-n Bucovina?\"\n\"Țipă AIESEC bată-l vina\"",
+      lcStatement: "\"FROM VLĂSTAR TO IMPACT.\"\n\"Ce se aude-n Bucovina? Țipă AIESEC bată-l vina\"",
       ibanRon: "RO54BTRLRONCRT0CW9821602",
       logoSrc: "/vlastar.jpeg",
       cardVariant: "vlastar",
@@ -162,12 +162,15 @@ export default async function DonationsPage({
       <div className="mb-4 flex justify-center md:mb-6">
         <a
           href="#local-committees"
-          className="inline-flex items-center rounded-full border border-[#b13a4f]/40 bg-[#4a0d18]/85 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-gold/60 hover:bg-[#5b1725] hover:text-gold"
+          className="inline-flex min-w-[16rem] items-center justify-center rounded-full bg-gold px-8 py-4 text-base font-extrabold uppercase tracking-[0.08em] text-black shadow-[0_20px_48px_rgba(226,192,49,0.45)] ring-1 ring-white/40 transition duration-200 hover:-translate-y-1 hover:shadow-[0_26px_56px_rgba(226,192,49,0.55)] md:min-w-[18rem] md:text-lg"
         >
           {isRo ? "Către Comitete Locale" : "Skip to Local Committees"}
         </a>
       </div>
       <section className="rounded-3xl border border-[#b13a4f]/55 bg-[linear-gradient(to_bottom,_#4a0d18_0%,_#5b2a2f_28%,_#145f36_100%)] p-5 text-foreground shadow-[0_24px_48px_rgba(0,0,0,0.3)] md:p-8">
+        <p className="text-center text-sm font-semibold uppercase tracking-[0.18em] text-gold md:text-base">
+          {isRo ? "Mesaj de la MCPs" : "Message from MCPs"}
+        </p>
         <div className="mt-5 space-y-4 text-justify text-[15px] leading-relaxed text-white/90 md:text-base">
           {isRo ? (
             <>
@@ -307,6 +310,18 @@ export default async function DonationsPage({
       </section>
 
       <CommitteesSection isRo={isRo} committees={committees} />
+
+      <section className="mx-auto mt-6 w-full max-w-6xl">
+        <div className="overflow-hidden rounded-3xl border border-white/10 bg-black/10">
+          <Image
+            src="/LCs_map.svg"
+            alt={isRo ? "Harta comitetelor locale AIESEC în România" : "Map of AIESEC local committees in Romania"}
+            width={1600}
+            height={1000}
+            className="h-auto w-full object-contain"
+          />
+        </div>
+      </section>
     </main>
   );
 }

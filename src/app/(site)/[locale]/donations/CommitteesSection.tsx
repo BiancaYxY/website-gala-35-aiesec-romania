@@ -105,6 +105,7 @@ export function CommitteesSection({
             const isArchitects = committee.cardVariant === "architects";
             const isVlastar = committee.cardVariant === "vlastar";
             const isStrike = committee.cardVariant === "strike";
+            const useTransparentLogoTreatment = isDauntless || isVlastar;
             const formattedStatement = isDauntless
               ? committee.lcStatement
               : committee.lcStatement?.replace(/\s*,?\s*(#\S+)/g, "\n\n$1");
@@ -172,7 +173,11 @@ export function CommitteesSection({
                       alt={`${committee.name} logo`}
                       width={64}
                       height={64}
-                      className="h-full w-full object-cover"
+                      className={`h-full w-full ${
+                        useTransparentLogoTreatment
+                          ? "object-contain p-1 mix-blend-multiply"
+                          : "object-cover"
+                      }`}
                     />
                   ) : (
                     "Logo"
