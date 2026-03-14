@@ -202,11 +202,12 @@ export default async function Home({
                       seara de <em>25</em>, cât și pentru ambele. Costurile cazării nu sunt acoperite de AIESEC România.
                     </p>
                     <p>
-                      Vă puteți asigura cazarea completând <em>formularul de înscriere</em>, alegând opțiunea de cazare.
+                      Vă puteți asigura cazarea completând formularul din pagina <em>„Locație”</em> din meniul
+                      website-ului.
                     </p>
                     <p>
-                      Dacă ați completat formularul și vă răzgândiți în privința cazării, vă rugăm anunțați echipa de
-                      organizare, persoana de contact fiind <em>Maria Moga (+40733423730)</em>.
+                      Dacă întâmpinați dificultăți, vă rugăm anunțați echipa de organizare, persoana de contact fiind{" "}
+                      <em>Maria Moga (+40733423730)</em>.
                     </p>
                   </>
                 ) : (
