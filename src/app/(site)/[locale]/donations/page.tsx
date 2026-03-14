@@ -164,7 +164,7 @@ export default async function DonationsPage({
           href="#local-committees"
           className="inline-flex min-w-[16rem] items-center justify-center rounded-full bg-gold px-8 py-4 text-base font-extrabold uppercase tracking-[0.08em] text-black shadow-[0_20px_48px_rgba(226,192,49,0.45)] ring-1 ring-white/40 transition duration-200 hover:-translate-y-1 hover:shadow-[0_26px_56px_rgba(226,192,49,0.55)] md:min-w-[18rem] md:text-lg"
         >
-          {isRo ? "Către Comitete Locale" : "Skip to Local Committees"}
+          {isRo ? "Vreau să donez!" : "I want to donate!"}
         </a>
       </div>
       <section className="rounded-3xl border border-[#b13a4f]/55 bg-[linear-gradient(to_bottom,_#4a0d18_0%,_#5b2a2f_28%,_#145f36_100%)] p-5 text-foreground shadow-[0_24px_48px_rgba(0,0,0,0.3)] md:p-8">
