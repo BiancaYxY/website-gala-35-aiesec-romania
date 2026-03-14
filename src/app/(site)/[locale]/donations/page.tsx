@@ -44,9 +44,9 @@ function getCommittees(isRo: boolean): Committee[] {
     },
     {
       name: "AIESEC în Constanța",
-      lcStatement: isRo
-        ? "\"AIESEC în Constanța\""
-        : "\"AIESEC in Constanta\"",
+      lcStatement: "\"We are pirates, we are free, we are coming from the sea\"",
+      logoSrc: "/frequency.jpeg",
+      cardVariant: "frequency",
       details: [
         isRo
           ? "Detaliile de transfer pentru acest comitet vor fi adăugate în curând."

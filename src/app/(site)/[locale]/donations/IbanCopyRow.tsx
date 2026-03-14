@@ -24,7 +24,8 @@ export function IbanCopyRow({
     | "rooftop"
     | "architects"
     | "vlastar"
-    | "strike";
+    | "strike"
+    | "frequency";
 }) {
   const [copied, setCopied] = useState(false);
 
@@ -69,6 +70,8 @@ export function IbanCopyRow({
                       ? "border-[#6fcf49]/55 bg-[#124d13] text-[#e8ffd7] hover:border-[#90e665] hover:bg-[#1a6619]"
                       : variant === "strike"
                         ? "border-[#f0d14f]/55 bg-[#13263c] text-[#eef7ff] hover:border-[#ffe475] hover:bg-[#1b3a59]"
+                        : variant === "frequency"
+                          ? "border-[#dce1e3]/38 bg-[#353a3b] text-white hover:border-white/70 hover:bg-[#454b4c]"
                 : "border-subtle bg-[rgb(var(--navy)/0.82)] text-foreground hover:border-[rgb(var(--gold)/0.6)] hover:bg-[rgb(var(--navy)/0.95)]"
           }`}
           aria-label={`${copyLabel} ${label}`}

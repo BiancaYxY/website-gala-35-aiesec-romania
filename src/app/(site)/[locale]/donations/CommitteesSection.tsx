@@ -23,7 +23,8 @@ export type Committee = {
     | "rooftop"
     | "architects"
     | "vlastar"
-    | "strike";
+    | "strike"
+    | "frequency";
 };
 
 function normalizeText(value: string) {
@@ -105,6 +106,7 @@ export function CommitteesSection({
             const isArchitects = committee.cardVariant === "architects";
             const isVlastar = committee.cardVariant === "vlastar";
             const isStrike = committee.cardVariant === "strike";
+            const isFrequency = committee.cardVariant === "frequency";
             const useTransparentLogoTreatment = isDauntless || isVlastar;
             const formattedStatement = isDauntless
               ? committee.lcStatement
@@ -136,6 +138,8 @@ export function CommitteesSection({
                                   ? "border-[#6bc447]/55 bg-gradient-to-br from-[#07270a]/95 via-[#125916]/92 to-[#73bf2f]/88 hover:bg-gradient-to-br hover:from-[#0c3410] hover:via-[#19711d] hover:to-[#86d643]"
                                   : isStrike
                                     ? "border-[#f1d24d]/55 bg-gradient-to-br from-[#0a1018]/95 via-[#16324c]/92 to-[#2d2f35]/95 hover:bg-gradient-to-br hover:from-[#111a26] hover:via-[#1f4568] hover:to-[#3a3d46]"
+                                    : isFrequency
+                                      ? "border-[#cfd4d6]/35 bg-gradient-to-br from-[#222728]/98 via-[#34393a]/95 to-[#4b5051]/92 hover:bg-gradient-to-br hover:from-[#2a2f30] hover:via-[#3b4142] hover:to-[#53595a]"
                       : "border-subtle bg-[rgb(var(--card)/0.62)] hover:bg-[rgb(var(--navy)/0.72)]"
                 }`}
               >
@@ -164,6 +168,8 @@ export function CommitteesSection({
                                   ? "border border-[#80dc58]/60 bg-[#103d12] text-[#efffdc]"
                                   : isStrike
                                     ? "border border-[#f2d95b]/60 bg-[#12263d] text-[#eef7ff]"
+                                    : isFrequency
+                                      ? "border border-[#d7dde0]/45 bg-[#3c4243] text-white"
                         : "border border-dashed border-white/30 bg-[rgb(var(--bg)/0.45)] text-muted"
                   }`}
                 >
@@ -207,6 +213,8 @@ export function CommitteesSection({
                                           ? "text-[#eaffd8]"
                                           : isStrike
                                             ? "text-[#f5f9ff]"
+                                            : isFrequency
+                                              ? "text-white"
                             : "text-foreground"
                     }`}
                   >
@@ -239,6 +247,8 @@ export function CommitteesSection({
                                           ? "text-[#dfffcf]"
                                           : isStrike
                                             ? "text-[#d9ecff]"
+                                            : isFrequency
+                                              ? "text-[#eef2f3]"
                             : "text-muted"
                     }`}
                   >
@@ -270,6 +280,8 @@ export function CommitteesSection({
                                 ? "border-[#6dc84d]/40 bg-[#0d3510]/70 text-[#ebffd9] font-bold italic whitespace-pre-line"
                                 : isStrike
                                   ? "border-[#f1d24d]/45 bg-[#102133]/75 text-[#f5fbff] font-bold italic whitespace-pre-line"
+                                  : isFrequency
+                                    ? "border-[#d7dde0]/35 bg-[#2f3536]/78 text-white font-bold italic whitespace-pre-line"
                           : "border-subtle bg-[rgb(var(--bg)/0.35)] text-foreground/90 whitespace-pre-line"
                     }`}
                   >
@@ -302,6 +314,8 @@ export function CommitteesSection({
                                           ? "text-[#dfffcf]"
                                           : isStrike
                                             ? "text-[#d9ecff]"
+                                            : isFrequency
+                                              ? "text-[#eef2f3]"
                             : "text-muted"
                     }`}
                   >
