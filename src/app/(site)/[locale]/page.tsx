@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { GalaCountdown } from "@/components/home/GalaCountdown";
 import { SheratonCarousel } from "@/components/home/SheratonCarousel";
-import { TrackedCtaLink } from "@/components/TrackedCtaLink";
 import { type Locale } from "@/i18n/getDict";
 
 export default async function Home({
@@ -94,17 +93,14 @@ export default async function Home({
       <section className="mt-8 mx-auto w-full max-w-4xl">
         <GalaCountdown locale={l} />
 
-        <TrackedCtaLink
-          href={"https://bit.ly/AIESECRomaniaGala35"}
-          eventName="registration_button_clicked"
-          target="_blank"
-          rel="noreferrer"
+        <Link
+          href={`/${l}/go/register`}
           className="blink-cta group mx-auto block max-w-3xl rounded-3xl bg-gold px-6 py-5 text-center text-black shadow-[0_16px_40px_rgba(226,192,49,0.35)] ring-1 ring-white/35 transition duration-200 hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(226,192,49,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
         >
           <p className="text-xl font-bold sm:text-2xl">
             {l === "ro" ? "Înscrie-te aici #pentruRomânia" : "Register here #pentruRomania"}
           </p>
-        </TrackedCtaLink>
+        </Link>
         <Link
           href={calendarUrl}
           target="_blank"
