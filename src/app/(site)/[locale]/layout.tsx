@@ -27,6 +27,7 @@ export default async function LocaleLayout({
           home: t(dict, "nav.home"),
           agenda: t(dict, "nav.agenda"),
           participants: t(dict, "nav.participants"),
+          venue: t(dict, "nav.venue"),
           donations: t(dict, "nav.donations"),
           shop: t(dict, "nav.shop"),
         }}

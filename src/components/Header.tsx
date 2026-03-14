@@ -25,6 +25,7 @@ export function Header({
     home: string;
     agenda: string;
     participants: string;
+    venue: string;
     donations: string;
     shop: string;
   };
@@ -55,6 +56,7 @@ export function Header({
     { label: labels.home, path: "" },
     { label: labels.agenda, path: "/agenda" },
     { label: labels.participants, path: "/participants" },
+    { label: labels.venue, path: "/venue" },
     { label: labels.donations, path: "/donations" },
     { label: labels.shop, path: "/shop" },
   ] as const;

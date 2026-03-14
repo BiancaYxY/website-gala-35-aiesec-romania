@@ -20,6 +20,7 @@ type SheratonCarouselProps = {
   addressLabel: string;
   addressText: string;
   addressHref: string;
+  showVenueHeader?: boolean;
 };
 
 export function SheratonCarousel({
@@ -28,6 +29,7 @@ export function SheratonCarousel({
   addressLabel,
   addressText,
   addressHref,
+  showVenueHeader = true,
 }: SheratonCarouselProps) {
   const [index, setIndex] = useState(() => {
     const defaultIndex = SHERATON_IMAGES.indexOf(DEFAULT_IMAGE);
@@ -41,9 +43,13 @@ export function SheratonCarousel({
   return (
     <div className="mt-6">
       <div className="mb-5 text-center text-white">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/65">{venueLabel}</p>
-        <p className="mt-1 text-lg font-semibold text-white sm:text-xl">{venueName}</p>
-        <div className="mx-auto my-3 h-px w-20 bg-gradient-to-r from-transparent via-white/45 to-transparent" />
+        {showVenueHeader && (
+          <>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/65">{venueLabel}</p>
+            <p className="mt-1 text-lg font-semibold text-white sm:text-xl">{venueName}</p>
+            <div className="mx-auto my-3 h-px w-20 bg-gradient-to-r from-transparent via-white/45 to-transparent" />
+          </>
+        )}
         <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/65">{addressLabel}</p>
         <a
           href={addressHref}
