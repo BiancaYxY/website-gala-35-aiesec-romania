@@ -9,8 +9,8 @@ export default async function AgendaPage({
   const isRo = locale === "ro";
 
   const intro = isRo
-    ? "V\u0103 a\u0219tept\u0103m la Gala aniversar\u0103 de 35 de ani pentru AIESEC \u00een Rom\u00e2nia, \u00eentre 24 \u0219i 25 Aprilie 2026, la Hotel Sheraton, Bucure\u0219ti. Programul evenimentului pentru ambele zile poate fi g\u0103sit mai jos. Agenda poate suferi modific\u0103ri, toate actualiz\u0103rile vor putea fi vizualizate live pe aceast\u0103 pagin\u0103 \ud83e\udd42"
-    : "We are looking forward to welcoming you to the 35th Anniversary Gala of AIESEC in Romania, taking place between April 24 and 25, 2026, at Sheraton Hotel, Bucharest. The event schedule for both days can be found below. The agenda may be subject to changes, and all updates will be available live on this page \ud83e\udd42";
+    ? "V\u0103 a\u0219tept\u0103m la Gala aniversar\u0103 de 35 de ani pentru AIESEC \u00een Rom\u00e2nia, \u00eentre 24 \u0219i 25 Aprilie 2026, la Hotel Sheraton, Bucure\u0219ti.\n\nProgramul evenimentului pentru ambele zile poate fi g\u0103sit mai jos. Agenda poate suferi modific\u0103ri, toate actualiz\u0103rile vor putea fi vizualizate live pe aceast\u0103 pagin\u0103 \ud83e\udd42"
+    : "We are looking forward to welcoming you to the 35th Anniversary Gala of AIESEC in Romania, taking place between April 24 and 25, 2026, at Sheraton Hotel, Bucharest.\n\nThe event schedule for both days can be found below. The agenda may be subject to changes, and all updates will be available live on this page \ud83e\udd42";
 
   const days = isRo
     ? [
@@ -97,7 +97,7 @@ export default async function AgendaPage({
         <h1 className="text-2xl font-semibold text-foreground md:text-3xl">
           Agenda
         </h1>
-        <p className="mt-4 text-sm leading-relaxed text-white/85 md:text-base">
+        <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-white/85 md:text-base">
           {intro}
         </p>
 

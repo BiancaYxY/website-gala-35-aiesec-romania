@@ -15,16 +15,16 @@ export default async function Home({
     l === "ro"
       ? {
           intro:
-            "AIESEC în România sărbătorește 35 de ani de excelență prin leadership! Te așteptăm la Gala Aniversară, locul unde generațiile trecute, prezente și viitoare au șansa să se re-conecteze, unde vom rememora rezultatele din trecut și vom celebra reușitele din prezent✨",
+            "AIESEC în România sărbătorește 35 de ani de excelență prin leadership! Te așteptăm la Gala Aniversară, locul unde generațiile trecute, prezente și viitoare au șansa să se reconecteze, unde vom rememora rezultatele din trecut și vom celebra reușitele din prezent✨",
           whyTitle: "De ce să participi?",
           alumni:
-            "Dragi alumni, această Gală este ocazia perfectă să vă re-conectați cu liderii AIESEC în România, să deveniți un stâlp și mai puternic în activitatea noastră, să vă reamintiți de amprenta pe care ați lăsat-o și fundația creată, pe care alte generații au construit mai departe.",
+            "Dragi alumni, această Gală este ocazia perfectă să vă reconectați cu liderii AIESEC în România, să deveniți un stâlp și mai puternic în activitatea noastră, să vă reamintiți de amprenta pe care ați lăsat-o și fundația creată, pe care alte generații au construit mai departe.",
           active:
             "Dragi membri activi, Gala 35 este oportunitatea perfectă de a înțelege istoria AIESEC în România și de a crea noi conexiuni cu cei ce au stat cândva în locul vostru, învățând din reușitele lor.",
           logistics:
-            "Vă așteptăm pe 24 și 25 aprilie, la București. Agenda evenimentului va fi trimisă în curând❤️‍🔥",
+            "Vă așteptăm pe 24 și 25 Aprilie, la București. Agenda evenimentului va fi trimisă în curând❤️‍🔥",
           closing: "Ne vedem curând ✨",
-          signature: "MC Hora și CC Gala 35 💃🏻",
+          signature: "MC Hora și CC Dor🪻💃🏻",
         }
       : {
           intro:

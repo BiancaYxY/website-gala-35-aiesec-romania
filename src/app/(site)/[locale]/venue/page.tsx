@@ -116,7 +116,7 @@ export default async function VenuePage({
       <section className="mx-auto w-full max-w-4xl rounded-3xl bg-[#4b0000]/85 px-4 py-6 ring-1 ring-white/15 md:px-8 md:py-8 lg:px-10">
         <div className="mx-auto max-w-3xl space-y-4 text-justify text-base text-white/90 sm:text-lg">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gold">{copy.label}</p>
-          <h1 className="text-3xl font-semibold text-foreground md:text-4xl">{copy.title}</h1>
+          <h1 className="text-left text-3xl font-semibold text-foreground md:text-4xl">{copy.title}</h1>
           <p>{copy.intro}</p>
           <p>{copy.paragraph}</p>
 
