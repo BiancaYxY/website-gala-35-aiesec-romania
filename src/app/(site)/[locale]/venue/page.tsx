@@ -151,7 +151,9 @@ export default async function VenuePage({
           <p className="font-medium text-foreground">{copy.finalLine}</p>
           <div className="flex justify-center">
             <a
-              href="#"
+              href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1773398031304&key=GRP&app=resvlink"
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex min-w-[16rem] items-center justify-center rounded-full bg-gold px-8 py-4 text-base font-extrabold uppercase tracking-[0.08em] text-black shadow-[0_20px_48px_rgba(226,192,49,0.45)] ring-1 ring-white/40 transition duration-200 hover:-translate-y-1 hover:shadow-[0_26px_56px_rgba(226,192,49,0.55)] md:min-w-[18rem] md:text-lg"
             >
               {copy.bookRoom}
