@@ -6,10 +6,10 @@ export default async function ParticipantsPage({
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ gen?: string; lc?: string }>;
+  searchParams: Promise<{ gen?: string; lc?: string; featured?: string }>;
 }) {
   const { locale } = await params;
-  const { gen, lc } = await searchParams;
+  const { gen, lc, featured } = await searchParams;
 
   const l = locale as Locale;
   const dict = getDict(l);
@@ -22,10 +22,12 @@ export default async function ParticipantsPage({
         <ParticipantsGrid
           initialGeneration={gen ?? "all"}
           initialLc={lc ?? "all"}
+          initialFeaturedOnly={featured === "1"}
           labels={{
             title: t(dict, "participants.title"),
             filterByGeneration: t(dict, "participants.filterByGeneration"),
             filterByLc: l === "ro" ? "Filtrează după LC" : "Filter by LC",
+            featured: l === "ro" ? "Click pentru a vedea CC Dor" : "Click to see CC Dor",
             all: t(dict, "participants.all"),
             loadMore: t(dict, "participants.loadMore"),
             noParticipants: t(dict, "participants.noParticipants"),

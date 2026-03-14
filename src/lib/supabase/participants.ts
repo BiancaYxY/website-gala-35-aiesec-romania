@@ -14,6 +14,19 @@ export type ParticipantsPageResult = {
   hasMore: boolean;
 };
 
+const FEATURED_PARTICIPANT_IDS = new Set([
+  "16f52330-d253-4d7c-bf4b-b595cd7604f1",
+  "209484d4-d358-42e8-982e-3391f7c52a98",
+  "219a7127-c953-487e-91d4-f194f668e41c",
+  "85bc2cd3-4512-4a85-86b9-7c79930feff1",
+  "8b47153e-2772-443b-81d9-08421a57692e",
+  "964f0d09-2e8f-4344-9456-835a33fbcfea",
+  "b29e72a5-4d58-4f0b-92ac-4a7fb87119ee",
+  "c206f5c8-b246-4cc5-883c-f8def1e010bd",
+  "e4ec235e-7857-4a3d-8bd3-db7ef3e8db74",
+  "f4cd56c5-fcf2-4375-806f-91ce38fadcbc",
+]);
+
 const TABLE = "participants";
 
 function getSupabaseEnv() {
@@ -97,6 +110,7 @@ function generationMatchesFilter(generation: string, filter: string): boolean {
 export async function listParticipantsByPage(args: {
   generation?: string;
   lc?: string;
+  featuredOnly?: boolean;
   page: number;
   pageSize: number;
 }): Promise<ParticipantsPageResult> {
@@ -113,7 +127,8 @@ export async function listParticipantsByPage(args: {
   const filteredRows = rows.filter((row) => {
     const generationMatches = generationMatchesFilter(normalizeGeneration(row.generation), generation);
     const lcMatches = !lc || lc.toLowerCase() === "all" ? true : normalizeLc(row.lc) === lc;
-    return generationMatches && lcMatches;
+    const featuredMatches = args.featuredOnly ? FEATURED_PARTICIPANT_IDS.has(row.id) : true;
+    return generationMatches && lcMatches && featuredMatches;
   });
   const offset = page * pageSize;
   const pageRows = filteredRows.slice(offset, offset + pageSize + 1);

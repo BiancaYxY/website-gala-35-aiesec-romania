@@ -9,6 +9,7 @@ type ParticipantsLabels = {
   title: string;
   filterByGeneration: string;
   filterByLc?: string;
+  featured?: string;
   all: string;
   loadMore: string;
   noParticipants: string;
@@ -25,6 +26,7 @@ type ParticipantsGridProps = {
   labels: ParticipantsLabels;
   initialGeneration?: string;
   initialLc?: string;
+  initialFeaturedOnly?: boolean;
 };
 
 const PAGE_SIZE = 10;
@@ -57,13 +59,19 @@ function SkeletonCard() {
   );
 }
 
-export function ParticipantsGrid({ labels, initialGeneration = "all", initialLc = "all" }: ParticipantsGridProps) {
+export function ParticipantsGrid({
+  labels,
+  initialGeneration = "all",
+  initialLc = "all",
+  initialFeaturedOnly = false,
+}: ParticipantsGridProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const [selectedGeneration, setSelectedGeneration] = useState(initialGeneration || "all");
   const [selectedLc, setSelectedLc] = useState(initialLc || "all");
+  const [featuredOnly, setFeaturedOnly] = useState(initialFeaturedOnly);
   const [yearInput, setYearInput] = useState(initialGeneration === "all" ? "" : initialGeneration);
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [page, setPage] = useState(0);
@@ -72,10 +80,11 @@ export function ParticipantsGrid({ labels, initialGeneration = "all", initialLc 
   const [loadingPage, setLoadingPage] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function fetchPage(args: { generation: string; lc: string; page: number }) {
+  async function fetchPage(args: { generation: string; lc: string; featuredOnly: boolean; page: number }) {
     const params = new URLSearchParams();
     params.set("gen", args.generation);
     params.set("lc", args.lc);
+    if (args.featuredOnly) params.set("featured", "1");
     params.set("page", String(args.page));
     params.set("pageSize", String(PAGE_SIZE));
 
@@ -92,11 +101,11 @@ export function ParticipantsGrid({ labels, initialGeneration = "all", initialLc 
     setParticipants(data.items ?? []);
   }
 
-  async function refresh(generation: string, lc: string) {
+  async function refresh(generation: string, lc: string, featured: boolean) {
     setInitialLoading(true);
     setError(null);
     try {
-      await fetchPage({ generation, lc, page: 0 });
+      await fetchPage({ generation, lc, featuredOnly: featured, page: 0 });
     } catch (err) {
       const message = err instanceof Error ? err.message : labels.errorLoading;
       setError(message);
@@ -110,13 +119,15 @@ export function ParticipantsGrid({ labels, initialGeneration = "all", initialLc 
   useEffect(() => {
     const genFromUrl = searchParams.get("gen") || "all";
     const lcFromUrl = searchParams.get("lc") || "all";
+    const featuredFromUrl = searchParams.get("featured") === "1";
     setSelectedGeneration(genFromUrl);
     setSelectedLc(lcFromUrl);
+    setFeaturedOnly(featuredFromUrl);
     setYearInput(genFromUrl === "all" ? "" : genFromUrl);
-    void refresh(genFromUrl, lcFromUrl);
+    void refresh(genFromUrl, lcFromUrl, featuredFromUrl);
   }, [searchParams]);
 
-  const updateUrl = (nextGen: string, nextLc: string) => {
+  const updateUrl = (nextGen: string, nextLc: string, nextFeatured: boolean) => {
     const params = new URLSearchParams(searchParams.toString());
     if (nextGen === "all") {
       params.delete("gen");
@@ -128,6 +139,11 @@ export function ParticipantsGrid({ labels, initialGeneration = "all", initialLc 
     } else {
       params.set("lc", nextLc);
     }
+    if (nextFeatured) {
+      params.set("featured", "1");
+    } else {
+      params.delete("featured");
+    }
 
     const query = params.toString();
     router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
@@ -136,13 +152,19 @@ export function ParticipantsGrid({ labels, initialGeneration = "all", initialLc 
   const onChangeGeneration = (nextGen: string) => {
     if (nextGen === selectedGeneration) return;
     setSelectedGeneration(nextGen);
-    updateUrl(nextGen, selectedLc);
+    updateUrl(nextGen, selectedLc, featuredOnly);
   };
 
   const onChangeLc = (nextLc: string) => {
     if (nextLc === selectedLc) return;
     setSelectedLc(nextLc);
-    updateUrl(selectedGeneration, nextLc);
+    updateUrl(selectedGeneration, nextLc, featuredOnly);
+  };
+
+  const onToggleFeatured = () => {
+    const nextFeatured = !featuredOnly;
+    setFeaturedOnly(nextFeatured);
+    updateUrl(selectedGeneration, selectedLc, nextFeatured);
   };
 
   const onYearInputChange = (value: string) => {
@@ -165,7 +187,7 @@ export function ParticipantsGrid({ labels, initialGeneration = "all", initialLc 
     setError(null);
 
     try {
-      await fetchPage({ generation: selectedGeneration, lc: selectedLc, page: nextPage });
+      await fetchPage({ generation: selectedGeneration, lc: selectedLc, featuredOnly, page: nextPage });
     } catch (err) {
       const message = err instanceof Error ? err.message : labels.errorLoading;
       setError(message);
@@ -177,6 +199,19 @@ export function ParticipantsGrid({ labels, initialGeneration = "all", initialLc 
   return (
     <section className="space-y-4">
       <div className="rounded-2xl bg-card p-4 ring-1 ring-white/10">
+        <div className="mb-4 flex justify-center">
+          <button
+            type="button"
+            onClick={onToggleFeatured}
+            className={`min-w-[18rem] rounded-xl px-6 py-3 text-center text-sm font-semibold transition md:min-w-[22rem] ${
+              featuredOnly
+                ? "bg-gold text-black"
+                : "border border-subtle bg-background text-foreground hover:bg-background/80"
+            }`}
+          >
+            {labels.featured || "Featured"}
+          </button>
+        </div>
         <label htmlFor="generation-filter" className="mb-2 block text-sm font-medium text-foreground">
           {labels.filterByGeneration}
         </label>

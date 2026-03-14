@@ -6,6 +6,7 @@ export async function GET(req: Request) {
 
   const generation = searchParams.get("gen") ?? "all";
   const lc = searchParams.get("lc") ?? "all";
+  const featuredOnly = searchParams.get("featured") === "1";
   const page = Number.parseInt(searchParams.get("page") ?? "0", 10);
   const pageSize = Number.parseInt(searchParams.get("pageSize") ?? "12", 10);
 
@@ -13,6 +14,7 @@ export async function GET(req: Request) {
     const participants = await listParticipantsByPage({
       generation,
       lc,
+      featuredOnly,
       page: Number.isNaN(page) ? 0 : page,
       pageSize: Number.isNaN(pageSize) ? 12 : pageSize,
     });
