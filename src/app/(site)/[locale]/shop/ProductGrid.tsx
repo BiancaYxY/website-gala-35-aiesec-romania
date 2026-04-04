@@ -99,11 +99,17 @@ export function ProductGrid({ products, isRo }: { products: Product[]; isRo: boo
         })}
       </div>
 
-      {cartItems.length > 0 && (
-        <div className="mt-8 rounded-3xl border border-gold/30 bg-card p-5 shadow-[0_8px_32px_rgba(226,192,49,0.1)] md:p-6">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-gold">
-            {isRo ? "Rezumat comandă" : "Order summary"}
+      <div className="mt-8 rounded-3xl border border-gold/30 bg-card p-5 shadow-[0_8px_32px_rgba(226,192,49,0.1)] md:p-6">
+        <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-gold">
+          {isRo ? "Rezumat comandă" : "Order summary"}
+        </p>
+        {cartItems.length === 0 ? (
+          <p className="text-sm text-white/30">
+            {isRo
+              ? "Niciun produs selectat. Apasa + Adauga pe un produs pentru a incepe."
+              : "No products selected yet. Press + Add on a product to get started."}
           </p>
+        ) : (
           <ul className="space-y-2">
             {cartItems.map((p) => {
               const qty = quantities[p.src] ?? 0;
@@ -121,22 +127,22 @@ export function ProductGrid({ products, isRo }: { products: Product[]; isRo: boo
               );
             })}
           </ul>
-          <div className="my-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-          <div className="flex items-center justify-between">
-            <span className="font-bold uppercase tracking-wide text-foreground">
-              {isRo ? "Total estimat" : "Estimated total"}
-            </span>
-            <span className="text-2xl font-extrabold text-gold">
-              {total % 1 === 0 ? total : total.toFixed(2)} RON
-            </span>
-          </div>
-          <p className="mt-3 text-xs text-white/40">
-            {isRo
-              ? "* Acesta este un calcul informativ. Comanda se plasează prin formularul de mai jos."
-              : "* This is an informative estimate. Orders are placed through the form below."}
-          </p>
+        )}
+        <div className="my-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <div className="flex items-center justify-between">
+          <span className="font-bold uppercase tracking-wide text-foreground">
+            {isRo ? "Total estimat" : "Estimated total"}
+          </span>
+          <span className="text-2xl font-extrabold text-gold">
+            {total % 1 === 0 ? total : total.toFixed(2)} RON
+          </span>
         </div>
-      )}
+        <p className="mt-3 text-xs text-white/40">
+          {isRo
+            ? "* Acesta este un calcul informativ. Comanda se plasează prin formularul de mai jos."
+            : "* This is an informative estimate. Orders are placed through the form below."}
+        </p>
+      </div>
 
       {selected && (
         <div
