@@ -1,4 +1,4 @@
-﻿"use client";
+﻿:q"use client";
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
