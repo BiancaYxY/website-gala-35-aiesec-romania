@@ -85,6 +85,18 @@ const products: Product[] = [
     nameRo: "Tricou Romania Everywhere",
     price: "85 RON",
   },
+  {
+    src: "/Shop%20T-shirt%20AIESEC%20Human.png",
+    nameEn: "T-shirt AIESEC Human",
+    nameRo: "Tricou AIESEC Human",
+    price: "80 RON",
+  },
+  {
+    src: "/Shop%20T-shirt%20AIESEC.png",
+    nameEn: "T-shirt AIESEC",
+    nameRo: "Tricou AIESEC",
+    price: "80 RON",
+  },
 ];
 
 export default async function ShopPage({

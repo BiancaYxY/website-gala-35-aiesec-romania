@@ -73,14 +73,14 @@ export function Header({
 
   return (
     <header className="fixed top-0 right-0 left-0 z-[1200] border-b border-subtle bg-black/20 backdrop-blur-sm">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-4 py-3">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-4 py-2">
         <Link href={href("")} className="inline-flex min-w-0 flex-1 self-stretch items-center">
-          <span className="relative h-full w-[min(52vw,14rem)] overflow-hidden sm:w-72">
+          <span className="relative h-14 w-36 overflow-hidden rounded-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] sm:w-48">
             <Image
-              src="/romania%20everywhere.svg"
-              alt="Romania Everywhere"
+              src="/aiesec_logo_4.svg"
+              alt="AIESEC in Romania"
               fill
-              className="object-contain object-left scale-[1.08] brightness-110 contrast-110 drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)]"
+              className="object-cover object-center"
               priority
             />
           </span>

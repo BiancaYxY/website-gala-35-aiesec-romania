@@ -9,8 +9,8 @@ export default async function AgendaPage({
   const isRo = locale === "ro";
 
   const intro = isRo
-    ? "V\u0103 a\u0219tept\u0103m la Gala aniversar\u0103 de 35 de ani pentru AIESEC \u00een Rom\u00e2nia, pe 25 Aprilie 2026, la Hotel Sheraton, Bucure\u0219ti.\n\nProgramul evenimentului pentru ambele zile poate fi g\u0103sit mai jos. Agenda poate suferi modific\u0103ri, toate actualiz\u0103rile vor putea fi vizualizate live pe aceast\u0103 pagin\u0103 \ud83e\udd42"
-    : "We are looking forward to welcoming you to the 35th Anniversary Gala of AIESEC in Romania, taking place on April 25, 2026, at Sheraton Hotel, Bucharest.\n\nThe event schedule for both days can be found below. The agenda may be subject to changes, and all updates will be available live on this page \ud83e\udd42";
+    ? "V\u0103 a\u0219tept\u0103m la Gala aniversar\u0103 de 35 de ani pentru AIESEC \u00een Rom\u00e2nia, pe 25 Aprilie 2026, la Hotel Sheraton, Bucure\u0219ti.\n\nProgramul evenimentului poate fi g\u0103sit mai jos. Agenda poate suferi modific\u0103ri, toate actualiz\u0103rile vor putea fi vizualizate live pe aceast\u0103 pagin\u0103 \ud83e\udd42"
+    : "We are looking forward to welcoming you to the 35th Anniversary Gala of AIESEC in Romania, taking place on April 25, 2026, at Sheraton Hotel, Bucharest.\n\nThe event schedule can be found below. The agenda may be subject to changes, and all updates will be available live on this page \ud83e\udd42";
 
   const days = isRo
     ? [

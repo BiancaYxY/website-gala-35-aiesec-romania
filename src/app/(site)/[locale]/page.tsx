@@ -22,7 +22,7 @@ export default async function Home({
           active:
             "Dragi membri activi, Gala 35 este oportunitatea perfectă de a înțelege istoria AIESEC în România și de a crea noi conexiuni cu cei ce au stat cândva în locul vostru, învățând din reușitele lor.",
           logistics:
-            "Vă așteptăm pe 24 și 25 Aprilie, la București❤️‍🔥",
+            "Vă așteptăm pe 25 Aprilie, la București❤️‍🔥",
           closing: "Ne vedem curând ✨",
           signature: "MC Hora și CC Dor🪻💃🏻",
         }
@@ -35,9 +35,9 @@ export default async function Home({
           active:
             "Dear active members, Gala 35 is the perfect opportunity to understand AIESEC in Romania's history and create new connections with those who once stood in your place, learning from their achievements.",
           logistics:
-            "We are waiting for you on April 24th and 25th, in Bucharest. The event agenda will be shared soon❤️‍🔥",
+            "We are waiting for you on April 25th, in Bucharest❤️‍🔥",
           closing: "See you soon ✨",
-          signature: "MC Hora and CC Gala 35 💃🏻",
+          signature: "MC Hora and CC Dor🪻💃🏻",
         };
   const calendarTitle =
     l === "ro"
@@ -45,12 +45,12 @@ export default async function Home({
       : "AIESEC in Romania Anniversary Gala - 35 Years";
   const calendarDetails =
     l === "ro"
-      ? "Eveniment desfășurat în perioada 24-25 aprilie la Hotel Sheraton București. Mai multe detalii pe site."
-      : "Event taking place on April 24-25 at Sheraton Hotel Bucharest. More details on the website.";
+      ? "Eveniment desfășurat pe 25 aprilie la Hotel Sheraton București. Mai multe detalii pe site."
+      : "Event taking place on April 25 at Sheraton Hotel Bucharest. More details on the website.";
   const calendarParams = new URLSearchParams({
     action: "TEMPLATE",
     text: calendarTitle,
-    dates: "20260424/20260426",
+    dates: "20260425T170000/20260425T230000",
     details: calendarDetails,
     location: "Calea Dorobanților 5-7, București, România, 010551",
   });
@@ -90,7 +90,7 @@ export default async function Home({
         </div>
       </section>
 
-      <section className="mt-8 mx-auto w-full max-w-4xl">
+<section className="mt-8 mx-auto w-full max-w-4xl">
         <GalaCountdown locale={l} />
 
         <Link
@@ -157,30 +157,14 @@ export default async function Home({
               <div className="mt-3 space-y-2 text-white/85">
                 {l === "ro" ? (
                   <>
-                    <p>Evenimentul este împărțit pe două zile:</p>
-                    <ul className="list-disc space-y-1 pl-5">
-                      <li>
-                        <em>24 Aprilie</em>, eveniment extern, unde sunt invitați și partenerii AIESEC în România.
-                      </li>
-                      <li>
-                        <em>25 Aprilie</em>, Gală internă care va găzdui doar alumnii și membrii activi.
-                      </li>
-                    </ul>
+                    <p>Evenimentul are loc pe <em>25 Aprilie</em> - Gală internă care va găzdui alumnii și membrii activi.</p>
                     <p>
                       Programul complet îl puteți găsi la secțiunea <em>„Agenda”</em>.
                     </p>
                   </>
                 ) : (
                   <>
-                    <p>The event is split into two days:</p>
-                    <ul className="list-disc space-y-1 pl-5">
-                      <li>
-                        <em>April 24</em>: external event, with AIESEC in Romania partners invited.
-                      </li>
-                      <li>
-                        <em>April 25</em>: internal Gala for alumni and active members only.
-                      </li>
-                    </ul>
+                    <p>The event takes place on <em>April 25</em> - an internal Gala for alumni and active members.</p>
                     <p>
                       You can find the full program in the <em>“Agenda”</em> section.
                     </p>
@@ -198,8 +182,7 @@ export default async function Home({
                 {l === "ro" ? (
                   <>
                     <p>
-                      Cazarea este disponibilă la <em>Hotel Sheraton</em>, contra cost, atât pentru seara de <em>24</em>,
-                      seara de <em>25</em>, cât și pentru ambele. Costurile cazării nu sunt acoperite de AIESEC România.
+                      Cazarea este disponibilă la <em>Hotel Sheraton</em>, contra cost, pentru seara de <em>25 Aprilie</em>. Costurile cazării nu sunt acoperite de AIESEC România.
                     </p>
                     <p>
                       Vă puteți asigura cazarea completând formularul din pagina <em>„Locație”</em> din meniul
@@ -213,9 +196,7 @@ export default async function Home({
                 ) : (
                   <>
                     <p>
-                      Accommodation is available at <em>Sheraton Hotel</em>, at your own cost, for the night of
-                      <em> April 24</em>, <em>April 25</em>, or both nights. Accommodation costs are not covered by AIESEC
-                      Romania.
+                      Accommodation is available at <em>Sheraton Hotel</em>, at your own cost, for the night of <em>April 25</em>. Accommodation costs are not covered by AIESEC Romania.
                     </p>
                     <p>
                       You can request accommodation in the <em>registration form</em> by selecting the accommodation

@@ -22,10 +22,10 @@ function getBucharestDateParts(date: Date) {
 function getNextGalaTarget() {
   const now = new Date();
   const { year, month, day } = getBucharestDateParts(now);
-  const galaYear = month > 4 || (month === 4 && day > 24) ? year + 1 : year;
+  const galaYear = month > 4 || (month === 4 && day > 25) ? year + 1 : year;
 
-  // April in Bucharest is DST (+03:00).
-  return new Date(`${galaYear}-04-24T00:00:00+03:00`);
+  // April 25 at 17:00 Bucharest time (DST = +03:00).
+  return new Date(`${galaYear}-04-25T17:00:00+03:00`);
 }
 
 function pad(value: number) {

@@ -1,8 +1,13 @@
+import Image from "next/image";
+
 export function Footer() {
   return (
     <footer className="mt-10 border-t border-white/15 bg-card text-white/90">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-2.5 px-4 py-2.5 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap items-center gap-1.5 text-xs sm:gap-2 sm:text-sm">
+          <div className="relative h-7 w-7 shrink-0">
+            <Image src="/aiesec_logo_2.svg" alt="AIESEC" fill className="object-contain" />
+          </div>
           <span className="font-semibold text-white">AIESEC in Romania socials:</span>
 
           <a
