@@ -9,73 +9,41 @@ export default async function AgendaPage({
   const isRo = locale === "ro";
 
   const intro = isRo
-    ? "V\u0103 a\u0219tept\u0103m la Gala aniversar\u0103 de 35 de ani pentru AIESEC \u00een Rom\u00e2nia, \u00eentre 24 \u0219i 25 Aprilie 2026, la Hotel Sheraton, Bucure\u0219ti.\n\nProgramul evenimentului pentru ambele zile poate fi g\u0103sit mai jos. Agenda poate suferi modific\u0103ri, toate actualiz\u0103rile vor putea fi vizualizate live pe aceast\u0103 pagin\u0103 \ud83e\udd42"
-    : "We are looking forward to welcoming you to the 35th Anniversary Gala of AIESEC in Romania, taking place between April 24 and 25, 2026, at Sheraton Hotel, Bucharest.\n\nThe event schedule for both days can be found below. The agenda may be subject to changes, and all updates will be available live on this page \ud83e\udd42";
+    ? "V\u0103 a\u0219tept\u0103m la Gala aniversar\u0103 de 35 de ani pentru AIESEC \u00een Rom\u00e2nia, pe 25 Aprilie 2026, la Hotel Sheraton, Bucure\u0219ti.\n\nProgramul evenimentului pentru ambele zile poate fi g\u0103sit mai jos. Agenda poate suferi modific\u0103ri, toate actualiz\u0103rile vor putea fi vizualizate live pe aceast\u0103 pagin\u0103 \ud83e\udd42"
+    : "We are looking forward to welcoming you to the 35th Anniversary Gala of AIESEC in Romania, taking place on April 25, 2026, at Sheraton Hotel, Bucharest.\n\nThe event schedule for both days can be found below. The agenda may be subject to changes, and all updates will be available live on this page \ud83e\udd42";
 
   const days = isRo
     ? [
         {
-          title: "Ziua 1",
-          subtitle: "24 aprilie",
-          description: "Eveniment extern de business, unde vor fi invita\u021bi \u0219i parteneri cheie AIESEC \u00een Rom\u00e2nia",
-          audience: "Alumni & Parteneri",
-          items: [
-            { time: "14:15 - 15:00", title: "Sosiri & Networking" },
-            { time: "15:00 - 15:30", title: "Deschidere & Discursuri" },
-            { time: "15:30 - 16:00", title: "Raport de Impact" },
-            { time: "16:00 - 16:45", title: "Pauz\u0103 de Networking" },
-            { time: "16:45 - 17:15", title: "MC Partner Keynote" },
-            { time: "17:15 - 17:45", title: "LC Partners Keynote" },
-            { time: "17:45 - 18:00", title: "Discurs de \u00cenchidere" },
-            { time: "18:00 - 19:15", title: "Networking" },
-          ],
-        },
-        {
-          title: "Ziua 2",
+          title: "Sâmbătă",
           subtitle: "25 aprilie",
           description: "Gal\u0103 aniversar\u0103, v\u0103 recomand\u0103m s\u0103 nu pierde\u021bi aceast\u0103 oportunitate de a v\u0103 reconecta cu vechii prieteni",
           audience: "Alumni & Membri activi",
           items: [
             { time: "17:00 - 18:00", title: "Sosiri & Networking" },
-            { time: "18:00 - 18:45", title: "Deschiderea Galei 35" },
-            { time: "18:45 - 19:15", title: "AIESEC \u00een Rom\u00e2nia - situa\u021bia actual\u0103 local\u0103 26.27" },
-            { time: "19:15 - 20:15", title: "Pauz\u0103 de Networking" },
-            { time: "20:15 - 21:00", title: "AIESEC \u00een Rom\u00e2nia - 35 de ani de excelen\u021b\u0103 Panel Discussion" },
-            { time: "21:00 - 22:00", title: "Celebrare & Closing" },
-            { time: "22:00 - 02:00", title: "After Party" },
+            { time: "18:00 - 18:30", title: "Deschiderea Galei 35" },
+            { time: "18:30 - 19:00", title: "AIESEC \u00een Rom\u00e2nia - situa\u021bia actual\u0103 local\u0103 26.27" },
+            { time: "19:00 - 19:45", title: "Pauz\u0103 de Networking" },
+            { time: "19:45 - 20:30", title: "AIESEC \u00een Rom\u00e2nia - 35 de ani de excelen\u021b\u0103 Panel Discussion" },
+            { time: "20:30 - 21:00", title: "Celebrare & Closing" },
+            { time: "21:00 - 00:00", title: "After Party" },
           ],
         },
       ]
     : [
         {
-          title: "Day 1",
-          subtitle: "April 24",
-          description: "External business event, where key AIESEC in Romania partners will also be invited",
-          audience: "Alumni & Partners",
-          items: [
-            { time: "14:15 - 15:00", title: "Arrivals & Networking" },
-            { time: "15:00 - 15:30", title: "Opening & Speeches" },
-            { time: "15:30 - 16:00", title: "Impact Report" },
-            { time: "16:00 - 16:45", title: "Networking Break" },
-            { time: "16:45 - 17:15", title: "MC Partner Keynote" },
-            { time: "17:15 - 17:45", title: "LC Partners Keynote" },
-            { time: "17:45 - 18:00", title: "Closing Speech" },
-            { time: "18:00 - 19:15", title: "Networking" },
-          ],
-        },
-        {
-          title: "Day 2",
+          title: "Saturday",
           subtitle: "April 25",
           description: "Anniversary Gala, we recommend not missing this opportunity to reconnect with old friends",
           audience: "Alumni & Active members",
           items: [
             { time: "17:00 - 18:00", title: "Arrivals & Networking" },
-            { time: "18:00 - 18:45", title: "Opening of Gala 35" },
-            { time: "18:45 - 19:15", title: "AIESEC in Romania - local current state 26.27" },
-            { time: "19:15 - 20:15", title: "Networking Break" },
-            { time: "20:15 - 21:00", title: "AIESEC in Romania - 35 years of Excellence Panel Discussion" },
-            { time: "21:00 - 22:00", title: "Celebration and Closing" },
-            { time: "22:00 - 02:00", title: "After Party" },
+            { time: "18:00 - 18:30", title: "Opening of Gala 35" },
+            { time: "18:30 - 19:00", title: "AIESEC in Romania - local current state 26.27" },
+            { time: "19:00 - 19:45", title: "Networking Break" },
+            { time: "19:45 - 20:30", title: "AIESEC in Romania - 35 years of Excellence Panel Discussion" },
+            { time: "20:30 - 21:00", title: "Celebration and Closing" },
+            { time: "21:00 - 00:00", title: "After Party" },
           ],
         },
       ];
