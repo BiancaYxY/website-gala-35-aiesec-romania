@@ -22,11 +22,11 @@ export default async function AgendaPage({
           items: [
             { time: "17:00 - 18:00", title: "Sosiri & Networking" },
             { time: "18:00 - 18:30", title: "Deschiderea Galei 35" },
-            { time: "18:30 - 19:00", title: "AIESEC \u00een Rom\u00e2nia - situa\u021bia actual\u0103 local\u0103 26.27" },
-            { time: "19:00 - 19:45", title: "Pauz\u0103 de Networking" },
-            { time: "19:45 - 20:30", title: "AIESEC \u00een Rom\u00e2nia - 35 de ani de excelen\u021b\u0103 Panel Discussion" },
-            { time: "20:30 - 21:00", title: "Celebrare & Closing" },
-            { time: "21:00 - 00:00", title: "After Party" },
+            { time: "18:30 - 19:15", title: "35 de ani de excelență - Panel Discussion" },
+            { time: "19:15 - 19:45", title: "Statusul Curent AIESEC în România" },
+            { time: "19:45 - 20:30", title: "Networking" },
+            { time: "20:30 - 21:00", title: "Celebration & Closing" },
+            { time: "21:00 - 00:00", title: "After Party 🎉" },
           ],
         },
       ]
@@ -39,11 +39,11 @@ export default async function AgendaPage({
           items: [
             { time: "17:00 - 18:00", title: "Arrivals & Networking" },
             { time: "18:00 - 18:30", title: "Opening of Gala 35" },
-            { time: "18:30 - 19:00", title: "AIESEC in Romania - local current state 26.27" },
-            { time: "19:00 - 19:45", title: "Networking Break" },
-            { time: "19:45 - 20:30", title: "AIESEC in Romania - 35 years of Excellence Panel Discussion" },
-            { time: "20:30 - 21:00", title: "Celebration and Closing" },
-            { time: "21:00 - 00:00", title: "After Party" },
+            { time: "18:30 - 19:15", title: "35 Years of Excellence - Panel Discussion" },
+            { time: "19:15 - 19:45", title: "Current Status of AIESEC in Romania" },
+            { time: "19:45 - 20:30", title: "Networking" },
+            { time: "20:30 - 21:00", title: "Celebrations & Closing" },
+            { time: "21:00 - 00:00", title: "After Party 🎉" },
           ],
         },
       ];
