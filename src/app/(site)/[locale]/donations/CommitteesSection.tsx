@@ -24,7 +24,8 @@ export type Committee = {
     | "architects"
     | "vlastar"
     | "strike"
-    | "frequency";
+    | "frequency"
+    | "mc-hora";
 };
 
 function normalizeText(value: string) {
@@ -107,7 +108,8 @@ export function CommitteesSection({
             const isVlastar = committee.cardVariant === "vlastar";
             const isStrike = committee.cardVariant === "strike";
             const isFrequency = committee.cardVariant === "frequency";
-            const useTransparentLogoTreatment = isDauntless || isVlastar;
+            const isMcHora = committee.cardVariant === "mc-hora";
+            const useTransparentLogoTreatment = isDauntless || isVlastar || isMcHora;
             const formattedStatement = isDauntless
               ? committee.lcStatement
               : committee.lcStatement?.replace(/\s*,?\s*(#\S+)/g, "\n\n$1");
@@ -116,7 +118,9 @@ export function CommitteesSection({
               <article
                 key={committee.name}
                 className={`rounded-2xl border p-5 shadow-[0_10px_24px_rgba(0,0,0,0.2)] transition hover:-translate-y-0.5 ${
-                  isEvermore
+                  isMcHora
+                    ? "sm:col-span-2 lg:col-span-3 border-[#e2c031]/65 bg-gradient-to-br from-[#4a0d18]/98 via-[#2d0a10]/95 to-[#1a0508]/98 shadow-[0_24px_56px_rgba(226,192,49,0.35)] ring-1 ring-[#e2c031]/35 hover:shadow-[0_32px_64px_rgba(226,192,49,0.5)]"
+                    : isEvermore
                     ? "border-[#c59a62]/50 bg-gradient-to-br from-[#2b1a0f]/95 via-[#3c2617]/92 to-[#1a120b]/95 hover:bg-gradient-to-br hover:from-[#3a2415] hover:via-[#4a2f1d] hover:to-[#21150d]"
                     : isUnleashed
                       ? "border-[#51a8ff]/50 bg-gradient-to-br from-[#0a1f35]/95 via-[#102a4a]/92 to-[#081729]/95 hover:bg-gradient-to-br hover:from-[#123058] hover:via-[#183b66] hover:to-[#0b213d]"
@@ -170,6 +174,8 @@ export function CommitteesSection({
                                     ? "border border-[#f2d95b]/60 bg-[#12263d] text-[#eef7ff]"
                                     : isFrequency
                                       ? "border border-[#d7dde0]/45 bg-[#3c4243] text-white"
+                                      : isMcHora
+                                        ? "border border-transparent bg-transparent text-[#f7e59a]"
                         : "border border-dashed border-white/30 bg-[rgb(var(--bg)/0.45)] text-muted"
                   }`}
                 >
@@ -215,6 +221,8 @@ export function CommitteesSection({
                                             ? "text-[#f5f9ff]"
                                             : isFrequency
                                               ? "text-white"
+                                              : isMcHora
+                                                ? "text-[#f7e59a]"
                             : "text-foreground"
                     }`}
                   >
@@ -282,6 +290,8 @@ export function CommitteesSection({
                                   ? "border-[#f1d24d]/45 bg-[#102133]/75 text-[#f5fbff] font-bold italic whitespace-pre-line"
                                   : isFrequency
                                     ? "border-[#d7dde0]/35 bg-[#2f3536]/78 text-white font-bold italic whitespace-pre-line"
+                                    : isMcHora
+                                      ? "border-[#e2c031]/50 bg-[#3a0a12]/70 text-[#f7e59a] text-sm font-bold italic whitespace-pre-line"
                           : "border-subtle bg-[rgb(var(--bg)/0.35)] text-foreground/90 whitespace-pre-line"
                     }`}
                   >
@@ -316,6 +326,8 @@ export function CommitteesSection({
                                             ? "text-[#d9ecff]"
                                             : isFrequency
                                               ? "text-[#eef2f3]"
+                                              : isMcHora
+                                                ? "text-[#f0d98a]"
                             : "text-muted"
                     }`}
                   >

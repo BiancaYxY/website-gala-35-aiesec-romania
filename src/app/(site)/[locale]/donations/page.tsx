@@ -49,8 +49,8 @@ function getCommittees(isRo: boolean): Committee[] {
       cardVariant: "frequency",
       details: [
         isRo
-          ? "Detaliile de transfer pentru acest comitet vor fi adăugate în curând."
-          : "Transfer details for this committee will be added soon.",
+          ? "Se poate dona în contul AIESEC România, precizând în detaliile de plată 'donație AIESEC Constanța'"
+          : "You can donate in the AIESEC Romania account, with the following payment details 'donation AIESEC Constanta'",
       ],
     },
     {
@@ -143,6 +143,19 @@ function getCommittees(isRo: boolean): Committee[] {
           ? "Titular cont: ASOCIAȚIA AIESEC ÎN UNIVERSITATEA DIN BUCUREȘTI"
           : "Account holder: ASOCIATIA AIESEC IN UNIVERSITATEA DIN BUCURESTI",
         isRo ? "Bancă: BCR" : "Bank: BCR",
+      ],
+    },
+    {
+      name: isRo ? "AIESEC în România" : "AIESEC in Romania",
+      lcStatement: "\"All for one. All for more\"\n\"Romania's where? Everywhere\"",
+      ibanRon: "RO71RNCB0072049689010008",
+      ibanEuro: "RO82RNCB0072049689010004",
+      logoSrc: "/MC%20HORA%20red.png",
+      cardVariant: "mc-hora",
+      details: [
+        isRo ? "Titular cont: AIESEC în România" : "Account holder: AIESEC in Romania",
+        isRo ? "Bancă: BCR" : "Bank: BCR",
+        isRo ? "Cod SWIFT: RNCBROBU" : "SWIFT code: RNCBROBU",
       ],
     },
   ];

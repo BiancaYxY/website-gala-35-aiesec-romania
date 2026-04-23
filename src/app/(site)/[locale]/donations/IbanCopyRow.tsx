@@ -25,7 +25,8 @@ export function IbanCopyRow({
     | "architects"
     | "vlastar"
     | "strike"
-    | "frequency";
+    | "frequency"
+    | "mc-hora";
 }) {
   const [copied, setCopied] = useState(false);
 
@@ -72,6 +73,8 @@ export function IbanCopyRow({
                         ? "border-[#f0d14f]/55 bg-[#13263c] text-[#eef7ff] hover:border-[#ffe475] hover:bg-[#1b3a59]"
                         : variant === "frequency"
                           ? "border-[#dce1e3]/38 bg-[#353a3b] text-white hover:border-white/70 hover:bg-[#454b4c]"
+                          : variant === "mc-hora"
+                            ? "border-[#e2c031]/60 bg-[#3a0a12] text-[#f7e59a] hover:border-[#f5d84a] hover:bg-[#510f1c]"
                 : "border-subtle bg-[rgb(var(--navy)/0.82)] text-foreground hover:border-[rgb(var(--gold)/0.6)] hover:bg-[rgb(var(--navy)/0.95)]"
           }`}
           aria-label={`${copyLabel} ${label}`}
