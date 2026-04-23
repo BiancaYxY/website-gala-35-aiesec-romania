@@ -30,6 +30,7 @@ export default async function LocaleLayout({
           venue: t(dict, "nav.venue"),
           donations: t(dict, "nav.donations"),
           shop: t(dict, "nav.shop"),
+          live: t(dict, "nav.live"),
         }}
       />
       <div className="pt-20">{children}</div>

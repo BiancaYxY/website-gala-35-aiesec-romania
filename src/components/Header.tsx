@@ -28,6 +28,7 @@ export function Header({
     venue: string;
     donations: string;
     shop: string;
+    live: string;
   };
 }) {
   const MENU_ANIMATION_MS = 240;
@@ -59,6 +60,7 @@ export function Header({
     { label: labels.venue, path: "/venue" },
     { label: labels.donations, path: "/donations" },
     { label: labels.shop, path: "/shop" },
+    { label: labels.live, path: "/live" },
   ] as const;
 
   const openMenu = () => {
