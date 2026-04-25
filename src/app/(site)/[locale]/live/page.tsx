@@ -24,7 +24,7 @@ export default async function LivePage({
 
         <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href="https://www.facebook.com/groups/AIESECROMANIA"
+            href="https://www.facebook.com/events/1497516401899786/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex w-full items-center justify-center gap-3 rounded-2xl border border-[#1877f2]/40 bg-[#0a1929]/80 px-6 py-3.5 text-sm font-semibold text-[#74b3ff] shadow-[0_8px_24px_rgba(24,119,242,0.15)] transition hover:-translate-y-0.5 hover:border-[#1877f2]/70 hover:bg-[#0d2040]/90 hover:shadow-[0_12px_32px_rgba(24,119,242,0.28)] sm:w-auto sm:min-w-[200px]"
